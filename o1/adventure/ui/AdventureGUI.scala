@@ -4,8 +4,14 @@ import scala.swing.*
 import scala.swing.event.*
 import javax.swing.UIManager
 import o1.adventure.Adventure
-import java.awt.{Point, Insets, Dimension}
-import scala.language.adhocExtensions // enable extension of Swing classes
+
+import java.awt.{GraphicsEnvironment, Font}
+import javax.swing.text.SimpleAttributeSet(Font)
+import javax.swing.text.{SimpleAttributeSet, StyleConstants}
+import java.awt.{Dimension, Insets, Point}
+import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing classes
+
+
 
 ////////////////// NOTE TO STUDENTS //////////////////////////
 // For the purposes of our course, it’s not necessary
@@ -21,7 +27,28 @@ import scala.language.adhocExtensions // enable extension of Swing classes
 @main def startAdventureGUI() =
   UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName)
 
+
   def top = new MainFrame:
+
+    class RuneFont:
+    getClass.getResourceAsStream(/ o1 / adventure / Runes_font.ttf
+    )
+    Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(24f)
+    GraphicsEnvironment.getLocalGraphicsEnvironment.registerFont(font)
+
+    val familyName = font.getFamily
+
+    end RuneFont
+
+    def getTextPane() = {
+    pane.peer.getStyledDocument
+    doc.getText(0, doc.getLength)
+    new SimpleAttributeSet().StyleConstants.setFontFamily(attrs, family)
+    new SimpleAttributeSet().StyleConstants.setFontSize(attrs, 24)
+    doc.setCharacterAttributes(0, text.lenght, plainAttrs, true)
+    for -> index
+          doc.setCharacterArributes(index, 1, runeAttrs, false)
+  }
 
     // Access to the application’s internal logic:
 
@@ -30,14 +57,12 @@ import scala.language.adhocExtensions // enable extension of Swing classes
 
     // Components:
 
-    val locationInfo = new TextArea(7, 80):
+    val locationInfo = new TextPane:
       editable = false
-      wordWrap = true
-      lineWrap = true
-    val turnOutput = new TextArea(7, 80):
+      prefferedSize = Dimension(600, 150)
+    val turnOutput = new TextPane:
       editable = false
-      wordWrap = true
-      lineWrap = true
+      prefferedSize = Dimension(600,150)
     val input = new TextField(40):
       minimumSize = preferredSize
     this.listenTo(input.keys)
@@ -93,10 +118,10 @@ import scala.language.adhocExtensions // enable extension of Swing classes
 
     def updateInfo(info: String) =
       if !this.game.isOver then
-        this.turnOutput.text = info
+        this.turnOutput.text.getTextPane = info
       else
-        this.turnOutput.text = info + "\n\n" + this.game.goodbyeMessage
-      this.locationInfo.text = this.player.location.fullDescription
+        this.turnOutput.text.getTextPane = info + "\n\n" + this.game.goodbyeMessage
+      this.locationInfo.text.getTextPane = this.player.location.fullDescription
       this.turnCounter.text = "Turns played: " + this.game.turnCount
 
   end top
