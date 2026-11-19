@@ -8,5 +8,5 @@ object Runes {
     else
       c
       
-  def isRune(c: Char): Boolean = c.toUpper > 0xE000 && c.toUpper < 0xE019
+  def isRune(c: Char): Boolean = c.toUpper >= 0xE000 && c.toUpper <= 0xE019
 }

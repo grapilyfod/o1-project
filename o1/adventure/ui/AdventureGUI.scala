@@ -3,10 +3,9 @@ package o1.adventure.ui
 import scala.swing.*
 import scala.swing.event.*
 import javax.swing.UIManager
-import o1.adventure.Adventure
+import o1.adventure.{Adventure, Runes, RuneFont}
 
-import java.awt.{GraphicsEnvironment, Font}
-import javax.swing.text.SimpleAttributeSet(Font)
+import java.awt.{Font, GraphicsEnvironment}
 import javax.swing.text.{SimpleAttributeSet, StyleConstants}
 import java.awt.{Dimension, Insets, Point}
 import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing classes
@@ -30,26 +29,6 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
 
   def top = new MainFrame:
 
-    class RuneFont:
-    getClass.getResourceAsStream(/ o1 / adventure / Runes_font.ttf
-    )
-    Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(24f)
-    GraphicsEnvironment.getLocalGraphicsEnvironment.registerFont(font)
-
-    val familyName = font.getFamily
-
-    end RuneFont
-
-    def getTextPane() = {
-    pane.peer.getStyledDocument
-    doc.getText(0, doc.getLength)
-    new SimpleAttributeSet().StyleConstants.setFontFamily(attrs, family)
-    new SimpleAttributeSet().StyleConstants.setFontSize(attrs, 24)
-    doc.setCharacterAttributes(0, text.lenght, plainAttrs, true)
-    for -> index
-          doc.setCharacterArributes(index, 1, runeAttrs, false)
-  }
-
     // Access to the application’s internal logic:
 
     val game = Adventure()
@@ -59,10 +38,10 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
 
     val locationInfo = new TextPane:
       editable = false
-      prefferedSize = Dimension(600, 150)
+      preferredSize = Dimension(600, 150)
     val turnOutput = new TextPane:
       editable = false
-      prefferedSize = Dimension(600,150)
+      preferredSize = Dimension(600,150)
     val input = new TextField(40):
       minimumSize = preferredSize
     this.listenTo(input.keys)
@@ -116,12 +95,32 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
         this.input.enabled = !this.game.isOver
 
 
+    def styleRunes(pane :TextPane) = {
+      
+      val doc = pane.peer.getStyledDocument
+      val text = doc.getText(0, doc.getLength)
+      
+      val plainAttrs = new SimpleAttributeSet()
+      val runeAttrs =new SimpleAttributeSet()
+      StyleConstants.setFontSize(runeAttrs, 24)
+      StyleConstants.setFontFamily(runeAttrs, RuneFont.familyName)
+      doc.setCharacterAttributes(0, text.length, plainAttrs, true)
+      
+      for index <- text.indices do 
+        if Runes.isRune(text(index)) then doc.setCharacterAttributes(index, 1, runeAttrs, false)
+    }
+    
+    
     def updateInfo(info: String) =
-      if !this.game.isOver then
-        this.turnOutput.text.getTextPane = info
-      else
-        this.turnOutput.text.getTextPane = info + "\n\n" + this.game.goodbyeMessage
-      this.locationInfo.text.getTextPane = this.player.location.fullDescription
+      if !this.game.isOver then {
+        this.turnOutput.text = info
+        styleRunes(this.turnOutput)
+      } else {
+        this.turnOutput.text = info + "\n\n" + this.game.goodbyeMessage
+        styleRunes(this.turnOutput)
+      }
+      this.locationInfo.text = this.player.location.fullDescription
+      styleRunes(this.locationInfo)
       this.turnCounter.text = "Turns played: " + this.game.turnCount
 
   end top

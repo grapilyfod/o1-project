@@ -16,7 +16,7 @@ class Adventure:
 
   /** Areas */
   //TODO : Give better descriptions to the areas.
-  private val pond           = Area("Pond", ("You wake up next to a pond".map(Runes.toRunes)))
+  private val pond           = Area("Pond", ("You wake up next to a" + "pond".map(Runes.toRunes)))
   private val clocktower     = Area("Clocktower", "A huge clocktower stands before you it's incessant ticking making your whole soul vibrate. It's door is sealed with a strange symbol")
   private val village        = Area("Moss Village", "Village of Frog poeple")
   //TODO : Add village NPCs
