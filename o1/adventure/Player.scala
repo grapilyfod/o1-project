@@ -92,5 +92,8 @@ class Player(startingArea: Area, game: Adventure):
         }
       case None => "Cannot build anything here"
 
+  def help: String = "Commands : \n go <direction \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> \n build <project>" + "\n placeholder".map(Runes.toRunes)
+
+
 end Player
 

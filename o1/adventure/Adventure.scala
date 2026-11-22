@@ -16,7 +16,10 @@ class Adventure:
 
   /** Areas */
   //TODO : Give better descriptions to the areas.
-  private val pond           = Area("Pond", ("You wake up next to a" + "pond".map(Runes.toRunes)))
+  private val pond           = Area("Pond", ("Your eyes slowly open after what feels like a long nap. Around you a mossy, overgrown land stretches far and wide." +
+    " Stone cottages lean against huge rusted machines, and copper pipe grow out of the ground like tree roots." +
+    " Frogs watch you from the lily pads. Little sparks drift through the air like fireflies. You look down at your feet and spot a small tin knight, next to it written in bold " +
+    " MAI".map(Runes.toRunes)))
   private val clocktower     = Area("Clocktower", "A huge clocktower stands before you it's incessant ticking making your whole soul vibrate. It's door is sealed with a strange symbol")
   private val village        = Area("Moss Village", "Village of Frog poeple")
   private val workshop       = Area("Area", "A workshop, seems abandoned")
@@ -24,7 +27,7 @@ class Adventure:
   private val clocktowerPeak = Area("Clocktower", "You can see everything from here, you know you have something to say but don't know why")
 
   /** World Items */
-  val tinknight: Item = Item("tin knight", "Tin Knight. Looks broken like no one has used it for a long long time")
+  val tinknight: Item = Item("tin knight", "Tin Knight".map(Runes.toRunes) + ". Looks broken like no one has used it for a long long time")
   
   //TODO: Change the destintion and Win condition
   private val destination = clocktowerPeak
