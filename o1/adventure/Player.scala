@@ -25,9 +25,13 @@ class Player(startingArea: Area, game: Adventure):
     * is an exit from the player’s current location towards the direction name. Returns
     * a description of the result: "You go DIRECTION." or "You can't go DIRECTION." */
   def go(direction: String) =
-    val destination = this.location.neighbor(direction)
-    this.currentLocation = destination.getOrElse(this.currentLocation)
-    if destination.isDefined then s"You go $direction." else s"You can't go $direction."
+    val hasBuilt = Vector("clockwork dragon", "lantern knight", "frog choir").exists(this.has)
+    if direction == "inside" && this.location.name == "Clocktower" && !hasBuilt then
+      "The clocktower door won't budge. It's waiting for you to bring something."
+    else
+      val destination = this.location.neighbor(direction)
+      this.currentLocation = destination.getOrElse(this.currentLocation)
+      if destination.isDefined then s"You go $direction." else s"You can't go $direction."
 
 
   /** Causes the player to rest for a short while (this has no substantial effect in game terms).
@@ -96,7 +100,7 @@ class Player(startingArea: Area, game: Adventure):
         }
       case None => "Cannot build anything here"
 
-  def help: String = "Commands : \n go <direction \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> \n build <project>" + "\n placeholder".map(Runes.toRunes)
+  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> \n build <project>" + "\n reminisce".map(Runes.toRunes)
 
 
 end Player

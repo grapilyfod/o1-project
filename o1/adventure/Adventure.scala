@@ -20,18 +20,18 @@ class Adventure:
     " Stone cottages lean against huge rusted machines, and copper pipe grow out of the ground like tree roots." +
     " Frogs watch you from the lily pads. Little sparks drift through the air like fireflies. You look down at your feet and spot a small tin knight, next to it written in bold " +
     " MAI".map(Runes.toRunes)))
-  private val clocktower     = Area("Clocktower", "A huge clocktower stands before you it's incessant ticking making your whole soul vibrate. It's door is sealed with a strange symbol")
+  private val clocktower     = Area("Clocktower",  "A huge clocktower stands before you, its incessant ticking making your whole soul vibrate.\n" + "Its door is sealed with a strange symbol. A wooden sign is nailed beside it: " + "clock".map(Runes.toRunes))
   private val village        = Area("Moss Village", "Village of Frog people")
-  private val workshop       = Area("Area", "A workshop, seems abandoned")
+  private val workshop       = Area("Workshop", "A workshop, seems abandoned")
   private val library        = Area("Library", "All the books are written in an unknown language")
-  private val clocktowerPeak = Area("Clocktower", "You can see everything from here, you know you have something to say but don't know why")
+  private val clocktowerPeak = Area("Clocktower Peak", "You can see everything from here, you know you have something to say but don't know why")
 
   /** World Items */
   val tinknight: Item = Item("tin knight", "Tin Knight".map(Runes.toRunes) + ". Looks broken like no one has used it for a long long time")
-  
+  val ember: Item = Item("ember", "A small, warm ember that never goes out. A tiny tag hangs from it: " + "ember".map(Runes.toRunes))
+
   //TODO: Change the destintion and Win condition
-  private val destination = clocktowerPeak
-/** Area neighbors */
+  /** Area neighbors */
   pond      .setNeighbors(Vector("south" -> clocktower))
   clocktower.setNeighbors(Vector("east" -> village, "inside" -> clocktowerPeak, "north" -> pond))
   village   .setNeighbors(Vector("west" -> clocktower, "north" -> workshop, "south" -> library))
@@ -46,16 +46,18 @@ class Adventure:
   pond.addprojects(WorkshopProject("test", 3, "A test project", Vector(tinknight)))
 /** Add NPCS */
   //TODO: ADD all Npcs to the game
-  val ember: Item = Item("ember", "A small, warm ember that never goes out. It would make a perfect light.")
-
-  village.addNPC(NPC("wandering trader", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
+  village.addNPC(NPC("diane", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
     "\"...so that the dark wasn't scary anymore.\"")))
 
-  village.addNPC(NPC("lamplighter", Vector(
+  village.addNPC(NPC("light", Vector(
   "\"You look like you need a light. Here, take my last ember. Make something good with it.\"",
   "\"Go on, the ember won't wait forever. Neither will dawn.\""),
-
   reward = Some(ember)))
+
+  village.addNPC(NPC("papyrus", Vector(
+    "Papyrus the toad puffs out his chest. \"So you're an inventor huh? You have to build a DRAGON! Everyone loves dragons!\"",
+    "\"The bigger it is, the better! People would talk about it for years!\"")))
+
   // HOW TO ADD PROJECTS : <area>.addNPC(NPC("Name", "Dialogue")
   /** The character that the player controls in the game. */
   val player = Player(pond, this)
@@ -75,7 +77,11 @@ class Adventure:
   def isOver = this.isComplete || this.player.hasQuit || this.turnCount >= this.timeLimit
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
-  def welcomeMessage = "You are lost in the woods. Find your way back home.\n\nBetter hurry, 'cause Scalatut elämät is on real soon now. And you can't miss Scalkkarit, right?"
+  def welcomeMessage =
+    "Somewhere, a great clock is ticking.\n\n" +
+    "You don't remember your name, or how you got here. You only have the strange feeling\n" +
+    "that you promised to finish something before dawn... but not what, or for whom.\n\n" +
+    "(Type help to see what you can do.)"
 
 
   /** Returns a message that is to be displayed to the player at the end of the game. The message
