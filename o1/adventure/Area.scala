@@ -16,6 +16,8 @@ class Area(var name: String, var description: String):
   private val items = Map[String, Item]()
   
   private val npcs = Map[String, NPC]()
+  
+  private val workshopProjects = Map[String, WorkshopProject]()
 
   /** Returns the area that can be reached from this area by moving in the given direction. The result
     * is returned in an `Option`; `None` is returned if there is no exit in the given direction. */
@@ -56,6 +58,11 @@ class Area(var name: String, var description: String):
   def addNPC(npc: NPC) = this.npcs += npc.name -> npc
   
   def population(target: String): Option[NPC] = npcs.get(target)
+  
+  def projects(projectName: String): Option[WorkshopProject] = workshopProjects.get(projectName)
+  
+  def addprojects(projectName: WorkshopProject) = this.workshopProjects += projectName.name -> projectName
+
 
 
   /** Returns a single-line description of the area for debugging purposes. */

@@ -7,6 +7,5 @@ object Runes {
       (0xE000 + distanceToA).toChar
     else
       c
-      
   def isRune(c: Char): Boolean = c.toUpper >= 0xE000 && c.toUpper <= 0xE019
 }

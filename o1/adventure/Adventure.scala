@@ -19,34 +19,20 @@ class Adventure:
   private val pond           = Area("Pond", ("You wake up next to a" + "pond".map(Runes.toRunes)))
   private val clocktower     = Area("Clocktower", "A huge clocktower stands before you it's incessant ticking making your whole soul vibrate. It's door is sealed with a strange symbol")
   private val village        = Area("Moss Village", "Village of Frog poeple")
-  //TODO : Add village NPCs
   private val workshop       = Area("Area", "A workshop, seems abandoned")
   private val library        = Area("Library", "All the books are written in an unknown language")
   private val clocktowerPeak = Area("Clocktower", "You can see everything from here, you know you have something to say but don't know why")
-  /*private val middle      = Area("Forest", "You are somewhere in the forest. There are a lot of trees here.\nBirds are singing.")
-  private val northForest = Area("Forest", "You are somewhere in the forest. A tangle of bushes blocks further passage north.\nBirds are singing.")
-  private val southForest = Area("Forest", "The forest just goes on and on.")
-  private val clearing    = Area("Forest Clearing", "You are at a small clearing in the middle of the forest.\nNearly invisible, twisted paths lead in many directions.")
-  private val tangle      = Area("Tangle of Bushes", "You are in a dense tangle of bushes. It's hard to see exactly where you're going.")
-  private val home        = Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val destination = home*/
+  
+  //TODO: Change the destintion and Win condition
+  private val destination = clocktowerPeak
 /** Area neighbours */
   pond      .setNeighbors(Vector("south" -> clocktower))
   clocktower.setNeighbors(Vector("south" -> workshop, "east" -> village, "inside" -> clocktowerPeak))
   village   .setNeighbors(Vector("west" -> clocktower, "library" -> library))
-  /*middle     .setNeighbors(Vector("north" -> northForest, "east" -> tangle, "south" -> southForest, "west" -> clearing   ))
-  northForest.setNeighbors(Vector(                        "east" -> tangle, "south" -> middle,      "west" -> clearing   ))
-  southForest.setNeighbors(Vector("north" -> middle,      "east" -> tangle, "south" -> southForest, "west" -> clearing   ))
-  clearing   .setNeighbors(Vector("north" -> northForest, "east" -> middle, "south" -> southForest, "west" -> northForest))
-  tangle     .setNeighbors(Vector("north" -> northForest, "east" -> home,   "south" -> southForest, "west" -> northForest))
-  home       .setNeighbors(Vector(                                                                  "west" -> tangle     ))*/
 
-  // TODO: Uncomment the two lines below. Improve the code so that it places the items in clearing and southForest, respectively.
-  /*clearing.addItem(Item("battery", "It's a small battery cell. Looks new."))
-  southForest.addItem(Item("remote", "It's the remote control for your TV.\nWhat it is doing in the forest, you have no idea.\nProblem is, there's no battery."))*/
   pond.addItem(Item("Tin Knight", "Tin Knight. Looks broken like no one has used it for a long long time"))
 /** Add NPCS */
-  pond.addNPC(NPC("scratch", "Moikka"))  
+  //TODO: ADD all Npcs to the game
   /** The character that the player controls in the game. */
   val player = Player(pond)
 
@@ -57,6 +43,7 @@ class Adventure:
 
 
   /** Determines if the adventure is complete, that is, if the player has won. */
+  //TODO: Have the correct win condition
   def isComplete =
     this.player.location == this.clocktowerPeak && this.player.has("remote") && this.player.has("battery")
 

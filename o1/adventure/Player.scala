@@ -74,6 +74,21 @@ class Player(startingArea: Area):
     this.location.population(target) match
       case Some(npc) => npc.speakYourMind
       case None      => "There is nobody called that here" 
+  
+  def build(projectName: String): String =
+    this.location.projects(projectName) match
+      case Some(project) => 
+        var missing = project.materials.filterNot(material => player.has)
+        if missing.nonEmpty then { 
+          missing = missing.map(_.name)
+          missing = missing.mkString(", ")
+          s"you are missing $missing"
+        } else { 
+          this.items.foreach.remove(material.name)
+          items += projectName
+          s"Successfully build $projectName"
+        }
+      case None => "Cannot build anything here"
 
 end Player
 
