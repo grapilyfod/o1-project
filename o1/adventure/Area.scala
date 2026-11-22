@@ -14,6 +14,8 @@ class Area(var name: String, var description: String):
   private val neighbors = Map[String, Area]()
 
   private val items = Map[String, Item]()
+  
+  private val npcs = Map[String, NPC]()
 
   /** Returns the area that can be reached from this area by moving in the given direction. The result
     * is returned in an `Option`; `None` is returned if there is no exit in the given direction. */
@@ -40,14 +42,20 @@ class Area(var name: String, var description: String):
     * DIRECTIONS SEPARATED BY SPACES". The items and directions are listed in an arbitrary order. */
   def fullDescription: String =
     val itemList = if this.items.isEmpty then "" else "\nYou see here: " + this.items.keys.mkString(" ")
+    val NPCList = if this.npcs.isEmpty then "" else "\nCharacters : " + this.npcs.keys.mkString(" ")
     val exitList = "\n\nExits available: " + this.neighbors.keys.mkString(" ")
-    this.description + itemList + exitList
+    
+    this.description + itemList + exitList + NPCList
 
   def addItem(item: Item) = this.items += item.name -> item
 
   def contains(itemName: String) = this.items.contains(itemName)
 
   def removeItem(itemName: String): Option[Item] = this.items.remove(itemName)
+  
+  def addNPC(npc: NPC) = this.npcs += npc.name -> npc
+  
+  def population(target: String): Option[NPC] = npcs.get(target)
 
 
   /** Returns a single-line description of the area for debugging purposes. */

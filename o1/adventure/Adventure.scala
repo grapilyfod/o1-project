@@ -45,7 +45,8 @@ class Adventure:
   /*clearing.addItem(Item("battery", "It's a small battery cell. Looks new."))
   southForest.addItem(Item("remote", "It's the remote control for your TV.\nWhat it is doing in the forest, you have no idea.\nProblem is, there's no battery."))*/
   pond.addItem(Item("Tin Knight", "Tin Knight. Looks broken like no one has used it for a long long time"))
-
+/** Add NPCS */
+  pond.addNPC(NPC("scratch", "Moikka"))  
   /** The character that the player controls in the game. */
   val player = Player(pond)
 

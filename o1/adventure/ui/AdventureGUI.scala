@@ -100,15 +100,15 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
       val doc = pane.peer.getStyledDocument
       val text = doc.getText(0, doc.getLength)
       
-      val plainAttrs = new SimpleAttributeSet()
-      StyleConstants.setFontSize(plainAttrs, 13)
-      val runeAttrs =new SimpleAttributeSet()
-      StyleConstants.setFontSize(runeAttrs, 24)
-      StyleConstants.setFontFamily(runeAttrs, RuneFont.familyName)
-      doc.setCharacterAttributes(0, text.length, plainAttrs, true)
+      val NormalTextAttributes = new SimpleAttributeSet()
+      StyleConstants.setFontSize(NormalTextAttributes, 13)
+      val runeAttrbs = new SimpleAttributeSet()
+      StyleConstants.setFontSize(runeAttrbs, 24)
+      StyleConstants.setFontFamily(runeAttrbs, RuneFont.familyName)
+      doc.setCharacterAttributes(0, text.length, NormalTextAttributes, true)
       
       for index <- text.indices do 
-        if Runes.isRune(text(index)) then doc.setCharacterAttributes(index, 1, runeAttrs, false)
+        if Runes.isRune(text(index)) then doc.setCharacterAttributes(index, 1, runeAttrbs, false)
     }
     
     
@@ -133,5 +133,3 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
   given CanEqual[Key.Value, Key.Value] = CanEqual.derived
 
 end startAdventureGUI
-
-

@@ -12,7 +12,7 @@ import scala.collection.mutable.Map
 class Player(startingArea: Area):
   private val items = Map[String, Item]()
   private var currentLocation = startingArea        // gatherer: changes in relation to the previous location
-  private var quitCommandGiven = false              // one-way flag
+  private var quitCommandGiven = false       // one-way flag
 
   /** Determines if the player has indicated a desire to quit the game. */
   def hasQuit = this.quitCommandGiven
@@ -69,6 +69,11 @@ class Player(startingArea: Area):
     else "You are carrying:\n" + this.items.keys.mkString("\n")
     /** Returns a brief description of the player’s state, for debugging purposes. */
   override def toString = "Now at: " + this.location.name
+
+  def talk(target: String): String =
+    this.location.population(target) match
+      case Some(npc) => npc.speakYourMind
+      case None      => "There is nobody called that here" 
 
 end Player
 
