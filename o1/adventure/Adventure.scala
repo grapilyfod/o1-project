@@ -30,9 +30,11 @@ class Adventure:
   private val destination = clocktowerPeak
 /** Area neighbors */
   pond      .setNeighbors(Vector("south" -> clocktower))
-  clocktower.setNeighbors(Vector("south" -> workshop, "east" -> village, "inside" -> clocktowerPeak))
-  village   .setNeighbors(Vector("west" -> clocktower, "library" -> library))
-
+  clocktower.setNeighbors(Vector("east" -> village, "inside" -> clocktowerPeak))
+  village   .setNeighbors(Vector("west" -> clocktower, "north" -> workshop, "south" -> library))
+  workshop  .setNeighbors(Vector("south" -> village))
+  library   .setNeighbors(Vector("north" -> village))
+  clocktowerPeak.setNeighbors(Vector("down" -> clocktower))
   //TODO
   // HOW TO ADD ITEMS : <area>.addItems(Item("Name", "Description")
   pond.addItem(tinknight)
