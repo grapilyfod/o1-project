@@ -33,7 +33,7 @@ class Adventure:
   private val destination = clocktowerPeak
 /** Area neighbors */
   pond      .setNeighbors(Vector("south" -> clocktower))
-  clocktower.setNeighbors(Vector("east" -> village, "inside" -> clocktowerPeak))
+  clocktower.setNeighbors(Vector("east" -> village, "inside" -> clocktowerPeak, "north" -> pond))
   village   .setNeighbors(Vector("west" -> clocktower, "north" -> workshop, "south" -> library))
   workshop  .setNeighbors(Vector("south" -> village))
   library   .setNeighbors(Vector("north" -> village))
