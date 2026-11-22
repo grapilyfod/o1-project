@@ -72,8 +72,12 @@ class Player(startingArea: Area, game: Adventure):
 
   def talk(target: String): String =
     this.location.population(target) match
-      case Some(npc) => npc.speakYourMind
-      case None      => "There is nobody called that here" 
+      case Some(npc) =>
+        val line = npc.speakYourMind
+        val reward_item = npc.give_reward()
+        reward_item.foreach( item => this.items += item.name -> item )
+        line + reward_item.map( item => s"\n You got: ${item.name}" ).getOrElse("")
+      case None      => "There is nobody called that here."
   
   def build(projectName: String): String =
     this.location.projects(projectName) match

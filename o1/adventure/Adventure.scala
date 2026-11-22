@@ -12,13 +12,13 @@ import o1.adventure.Runes
 class Adventure:
 
   /** the name of the game */
-  val title = "A Forest Adventure"
+  val title = "Memoir"
 
   /** Areas */
   //TODO : Give better descriptions to the areas.
   private val pond           = Area("Pond", ("You wake up next to a" + "pond".map(Runes.toRunes)))
   private val clocktower     = Area("Clocktower", "A huge clocktower stands before you it's incessant ticking making your whole soul vibrate. It's door is sealed with a strange symbol")
-  private val village        = Area("Moss Village", "Village of Frog poeple")
+  private val village        = Area("Moss Village", "Village of Frog people")
   private val workshop       = Area("Area", "A workshop, seems abandoned")
   private val library        = Area("Library", "All the books are written in an unknown language")
   private val clocktowerPeak = Area("Clocktower", "You can see everything from here, you know you have something to say but don't know why")
@@ -41,6 +41,16 @@ class Adventure:
   pond.addprojects(WorkshopProject("test", 3, "A test project", Vector(tinknight)))
 /** Add NPCS */
   //TODO: ADD all Npcs to the game
+  val ember: Item = Item("ember", "A small, warm ember that never goes out. It would make a perfect light.")
+
+  village.addNPC(NPC("wandering trader", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
+    "\"...so that the dark wasn't scary anymore.\"")))
+
+  village.addNPC(NPC("lamplighter", Vector(
+  "\"You look like you need a light. Here, take my last ember. Make something good with it.\"",
+  "\"Go on, the ember won't wait forever. Neither will dawn.\""),
+
+  reward = Some(ember)))
   // HOW TO ADD PROJECTS : <area>.addNPC(NPC("Name", "Dialogue")
   /** The character that the player controls in the game. */
   val player = Player(pond, this)

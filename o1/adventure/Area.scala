@@ -44,9 +44,8 @@ class Area(var name: String, var description: String):
     * DIRECTIONS SEPARATED BY SPACES". The items and directions are listed in an arbitrary order. */
   def fullDescription: String =
     val itemList = if this.items.isEmpty then "" else "\nYou see here: " + this.items.keys.mkString(" ")
-    val NPCList = if this.npcs.isEmpty then "" else "\nCharacters : " + this.npcs.keys.mkString(" ")
+    val NPCList = if this.npcs.isEmpty then "" else "\nCharacters : " + this.npcs.keys.mkString(", ")
     val exitList = "\n\nExits available: " + this.neighbors.keys.mkString(" ")
-    
     this.description + itemList + exitList + NPCList
 
   def addItem(item: Item) = this.items += item.name -> item
@@ -62,8 +61,6 @@ class Area(var name: String, var description: String):
   def projects(projectName: String): Option[WorkshopProject] = workshopProjects.get(projectName)
   
   def addprojects(projectName: WorkshopProject) = this.workshopProjects += projectName.name -> projectName
-
-
 
   /** Returns a single-line description of the area for debugging purposes. */
   override def toString =
