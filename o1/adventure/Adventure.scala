@@ -28,15 +28,20 @@ class Adventure:
   
   //TODO: Change the destintion and Win condition
   private val destination = clocktowerPeak
-/** Area neighbours */
+/** Area neighbors */
   pond      .setNeighbors(Vector("south" -> clocktower))
   clocktower.setNeighbors(Vector("south" -> workshop, "east" -> village, "inside" -> clocktowerPeak))
   village   .setNeighbors(Vector("west" -> clocktower, "library" -> library))
 
+  //TODO
+  // HOW TO ADD ITEMS : <area>.addItems(Item("Name", "Description")
   pond.addItem(tinknight)
+  //TODO
+  // HOW TO ADD PROJECTS : <area>.addprojects(WorkshopProject("Name", Turn count to build, "Description", materials)
   pond.addprojects(WorkshopProject("test", 3, "A test project", Vector(tinknight)))
 /** Add NPCS */
   //TODO: ADD all Npcs to the game
+  // HOW TO ADD PROJECTS : <area>.addNPC(NPC("Name", "Dialogue")
   /** The character that the player controls in the game. */
   val player = Player(pond, this)
 
