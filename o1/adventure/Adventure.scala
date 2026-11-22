@@ -22,6 +22,9 @@ class Adventure:
   private val workshop       = Area("Area", "A workshop, seems abandoned")
   private val library        = Area("Library", "All the books are written in an unknown language")
   private val clocktowerPeak = Area("Clocktower", "You can see everything from here, you know you have something to say but don't know why")
+
+  /** World Items */
+  val tinknight: Item = Item("tin knight", "Tin Knight. Looks broken like no one has used it for a long long time")
   
   //TODO: Change the destintion and Win condition
   private val destination = clocktowerPeak
@@ -30,11 +33,12 @@ class Adventure:
   clocktower.setNeighbors(Vector("south" -> workshop, "east" -> village, "inside" -> clocktowerPeak))
   village   .setNeighbors(Vector("west" -> clocktower, "library" -> library))
 
-  pond.addItem(Item("Tin Knight", "Tin Knight. Looks broken like no one has used it for a long long time"))
+  pond.addItem(tinknight)
+  pond.addprojects(WorkshopProject("test", 3, "A test project", Vector(tinknight)))
 /** Add NPCS */
   //TODO: ADD all Npcs to the game
   /** The character that the player controls in the game. */
-  val player = Player(pond)
+  val player = Player(pond, this)
 
   /** The number of turns that have passed since the start of the game. */
   var turnCount = 0
@@ -48,7 +52,7 @@ class Adventure:
     this.player.location == this.clocktowerPeak && this.player.has("remote") && this.player.has("battery")
 
   /** Determines whether the player has won, lost, or quit, thereby ending the game. */
-  def isOver = this.isComplete || this.player.hasQuit || this.turnCount == this.timeLimit
+  def isOver = this.isComplete || this.player.hasQuit || this.turnCount >= this.timeLimit
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = "You are lost in the woods. Find your way back home.\n\nBetter hurry, 'cause Scalatut elämät is on real soon now. And you can't miss Scalkkarit, right?"

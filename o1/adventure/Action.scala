@@ -24,6 +24,7 @@ class Action(input: String):
       case "examine"   => Some(actor.examine(this.modifiers))
       case "inventory" => Some(actor.inventory)
       case "talk"      => Some(actor.talk(this.modifiers))
+      case "build"     => Some(actor.build(this.modifiers))
       case other       => None
   /** Returns a textual description of the action object, for debugging purposes. */
   override def toString = s"$verb (modifiers: $modifiers)"

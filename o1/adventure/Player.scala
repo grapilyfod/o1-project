@@ -9,7 +9,7 @@ import scala.collection.mutable.Map
   * for instance.
   *
   * @param startingArea  the player’s initial location */
-class Player(startingArea: Area):
+class Player(startingArea: Area, game: Adventure):
   private val items = Map[String, Item]()
   private var currentLocation = startingArea        // gatherer: changes in relation to the previous location
   private var quitCommandGiven = false       // one-way flag
@@ -78,15 +78,17 @@ class Player(startingArea: Area):
   def build(projectName: String): String =
     this.location.projects(projectName) match
       case Some(project) => 
-        var missing = project.materials.filterNot(material => player.has)
+        val missing = project.materials.filterNot(material => this.has(material.name))
         if missing.nonEmpty then { 
-          missing = missing.map(_.name)
-          missing = missing.mkString(", ")
-          s"you are missing $missing"
+          val names = missing.map(_.name).mkString(", ")
+          s"you are missing $names"
         } else { 
-          this.items.foreach.remove(material.name)
-          items += projectName
-          s"Successfully build $projectName"
+          for material <- project.materials do
+            this.items.remove(material.name)
+          val creation = Item(project.name, project.description)
+          items += project.name -> creation
+          game.turnCount += project.time -1
+          s"Successfully built ${project.name}"
         }
       case None => "Cannot build anything here"
 
