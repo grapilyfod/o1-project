@@ -53,18 +53,18 @@ class Adventure:
   /** Add NPCS */
   //TODO: ADD all Npcs to the game
   village.addNPC(NPC("diane", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
-    "\"...so that the dark wasn't scary anymore.\"")))
+    "\"...so that the dark wasn't scary anymore.\""), runic = "o"))
 
   village.addNPC(NPC("light", Vector(
   "\"You look like you need a light. Here, take my last ember. Make something good with it.\"",
   "\"Go on, the ember won't wait forever. Neither will dawn.\""),
-  reward = Some(ember)))
+  reward = Some(ember), runic = "s"))
 
   village.addNPC(NPC("papyrus", Vector(
     "Papyrus the toad puffs out his chest. \"So you're an inventor huh? You have to build a DRAGON! Everyone loves dragons!\"",
-    "\"The bigger it is, the better! People would talk about it for years!\"")))
+    "\"The bigger it is, the better! People would talk about it for years!\""), runic = "h"))
 
-   library.addNPC(NPC("archivist", Vector(
+  library.addNPC(NPC("archivist", Vector(
     "An ancient frog peers at you over tiny glasses. \"Ah. You can't read any of this, can you?\"",
     "\"These symbols aren't a foreign language. Each one is simply a letter.\"",
     "\"Look at things whose names you already know. Their symbols will teach you the letters.\"",

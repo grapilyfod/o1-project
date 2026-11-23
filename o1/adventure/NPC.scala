@@ -1,13 +1,13 @@
 package o1.adventure
 
-class NPC(val name : String, val dialogue_lines: Vector[String], val reward: Option[Item] = None):
+class NPC(val name : String, val dialogue_lines: Vector[String], val reward: Option[Item] = None, val runic: String = ""):
 
   private var line_num = 0
 
   private var rewarded = false
 
   def speakYourMind: String =
-    val line = this.dialogue_lines(this.line_num)
+    val line = Runes.toRunicText(dialogue_lines(this.line_num), this.runic)
     val current_pos =
       if this.dialogue_lines.size > 1 then
         s"\n(${this.line_num + 1}/${this.dialogue_lines.size})"
