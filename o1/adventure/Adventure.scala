@@ -26,38 +26,67 @@ class Adventure:
   private val clocktower     = Area("Clocktower",  "The clocktower rises above everything, it's ticking so loud you can feel it in your heart. "
     + "The great door at its foot is sealed with a ring of runes : " + " clock".map(Runes.toRunes) + "Behind it, the tick counts down the hours until dawn.")
   private val village        = Area("Moss Village", "Crooked cottages with roofs of thick green moss huddle around a well that hums quietly to itself. Strings of dim paper lanters hand between the chimneys, and from every window comes the soft croak of frogs telling eachother stories." +
-    "A wooden sign at the village gate reads " + " moss village".map(Runes.toRunes) + "Beneath the tick of the clocktower, nobody seems to be in a hurry.")
-  private val workshop       = Area("Workshop", "Rusted gears the size of carts lean against walls of scrap and copper, and half-finished machines sit under sheets of dusty cloth. " +
-    "Three blueprints are pinned to the far wall, each with a rough drawing and a rune label underneath: "
-  + "dragon" + "beside a coiled, winged machine," + " frog choir" + "beside a row of tiny singing frogs, and " + " lantern knight " + "beside a small armoured figure holding a light. " +
-    "A fourth, newer sheet shows a crystal music box labelled " + " quartz jukebox" + ". Someone spent a lifetime here, and it feels like they only just stepped out.")
+    "A wooden sign at the village gate reads " + "moss village".map(Runes.toRunes) + "Beneath the tick of the clocktower, nobody seems to be in a hurry.")
+  private val workshop       = Area("Workshop", "Rusted gears the size of carts lean against walls of scrap and copper, and half-finished machines sit under sheets of dusty cloth. Three blueprints are pinned to the far wall, each with a rough drawing and a rune label underneath: "
+  + "dragon".map(Runes.toRunes) + "beside a coiled, winged machine," + "frog choir".map(Runes.toRunes) + "beside a row of tiny singing frogs, and " + "lantern knight ".map(Runes.toRunes) + "beside a small armoured figure holding a light. " +
+    "A fourth, newer sheet shows a crystal music box labelled " + " quartz jukebox".map(Runes.toRunes) + ". Someone spent a lifetime here, and it feels like they only just stepped out.")
   private val library        = Area("Library",  "Tall shelves curl up into the fog, packed with books whose pages are blank where the mist has eaten the words. A whisper drifts between the shelves, soft and kind, telling you that forgetting doesn't hurt. " +
     "A few books have survived, their covers still marked with careful rune titles. It is quiet here, and tempting to stay.")
   private val clocktowerPeak = Area("Clocktower Peak", "At the top, the whole land lies spread beneath you: the pond, the village, the workshop and the library, each with its own glow of sparks. The break of dawn is drawing nearer " +
     "In front of the clock face stands a smooth stone panel with three empty slots in a row, as if waiting for something to be carved into it." +
     " You feel sure you have something to say, and you almost remember what.")
 
+  private val wilderness     = Area("Wilderness", "In front of you lies an empty wilderness with paths twisting away in every direction.\n" +
+    "In the middle of the area,you can see an old wooden sign with runic symbols carved on it.\n" +
+    " 2" + "south".map(Runes.toRunes) +
+    " 1 " + "west".map(Runes.toRunes) +
+    " 1 " + "north".map(Runes.toRunes) +
+    " 1 " + "west".map(Runes.toRunes))
+  private val text = "Only deserted land in the distance. Every path seems to lead the same way with no end in sight."
+  private val maze_1 = Area("Wilderness", this.text)
+  private val maze_2 = Area("Wilderness", this.text)
+  private val maze_3 = Area("Wilderness", this.text)
+  private val maze_4 = Area("Wilderness", this.text)
+  private val hidden_valley = Area("Valley of the damned", "You see light at the end of the tunnel. A flower valley appears before your eyes.\n" +
+    "You get the sense of feeling that nobody has stepped foot onto this area for years.\n" +
+    "There is a wooden chest in the middle of the area, surrounded by flowers of all kind.")
   /** World Items */
   val knight_figurine: Item = Item("tin knight", "Looks broken like no one has used it for a long long time")
   val ember: Item = Item("ember", "A small, warm ember that never goes out. ")
   val old_book: Item = Item("old book", "The cover reads: " + "stories".map(Runes.toRunes) + "\n" + "Inside, only one tale survives: a little knight who carried a light, so that the dark wasn't scary anymore.")
   val diary: Item = Item("diary", "A diary in shaky handwriting. Most pages are blank, eaten by the fog. One survives:\n" + "\"She's scared of the dark.\n" + "Just needs a bit of light.\"")
   val runic_page: Item =Item("torn page", "A page covered entirely in symbols:\n" + "the light remembers what the mind forgets".map(Runes.toRunes))
+  val workshop_key: Item = Item("key", "A golden key. Seems dusty.\n" + "Could be useful somewhere in the village.")
+  val drawing: Item = Item("drawing", "A cranyon drawn warrior on a paper. Underneath contains written letters:\n" + "grandpa".map(Runes.toRunes) + ". Mai")
   //TODO: Change the destintion and Win condition
   /** Area neighbors */
   pond      .setNeighbors(Vector("south" -> crossroads))
   crossroads.setNeighbors(Vector("south" -> clocktower, "north" -> pond))
   clocktower.setNeighbors(Vector("east" -> village, "inside" -> clocktowerPeak, "north" -> crossroads))
-  village   .setNeighbors(Vector("west" -> clocktower, "north" -> workshop, "south" -> library))
+  village   .setNeighbors(Vector("west" -> clocktower, "north" -> workshop, "south" -> library, "east" -> wilderness))
   workshop  .setNeighbors(Vector("south" -> village))
   library   .setNeighbors(Vector("north" -> village))
   clocktowerPeak.setNeighbors(Vector("down" -> clocktower))
+  wilderness.setNeighbors(Vector("west" -> village, "south" -> maze_1, "east" -> wilderness, "north" -> wilderness))
+  hidden_valley.setNeighbors(Vector("out" -> wilderness))
+  def maze_path(current_area: Area, real_path: String, next: Area) =
+  for path <- Vector("south", "east", "north", "west") do
+    if path == real_path then
+      current_area.setNeighbor(path, next)
+    else
+      current_area.setNeighbor(path, wilderness)
+  maze_path(this.maze_1, "south", this.maze_2)
+  maze_path(this.maze_2, "west", this.maze_3)
+  maze_path(this.maze_3, "north", this.maze_4)
+  maze_path(this.maze_4, "west", this.hidden_valley)
   //TODO
   // HOW TO ADD ITEMS : <area>.addItems(Item("Name", "Description")
   pond.addItem(knight_figurine)
   library.addItem(old_book)
   library.addItem(diary)
   library.addItem(runic_page)
+  hidden_valley.addItem(workshop_key)
+  hidden_valley.addItem(drawing)
   //TODO
   // HOW TO ADD PROJECTS : <area>.addprojects(WorkshopProject("Name", Turn count to build, "Description", materials)
   workshop.addprojects(WorkshopProject("lantern knight", 3, "A small figure of a knight holding a light", Vector(knight_figurine, ember)))
@@ -109,7 +138,7 @@ class Adventure:
   def goodEnding = this.normalEnding && this.player.hasRemembered
 
   def TimeRanOut = this.turnCount >= this.timeLimit
-  
+
   def buildWrong = TimeRanOut && !this.player.has("lantern knight")
 
   def normalEnding = this.player.location == this.clocktowerPeak && this.player.has("lantern knight")
@@ -138,14 +167,14 @@ class Adventure:
       + "\n Far away, a girl wakes in a dim room and sees a small knight holding a light. She smiles, and she reaches for it. You feel it happen, even from here."
       + "\n But spell on the stone panel stays unanswered. You know there was something you meant to say, and you cannot find it. The sawn comes anyway, genle and golden, and it carries your light away. IT was a good gift. It could have been more. "
     } else  if this.buildWrong then { // game over due to player quitting
-      "TYou look down at your work. It is beautifull, magnificent, but nowhere near finished. The gears hang loosse nad the light you needed is nowhere in it" 
+      "TYou look down at your work. It is beautifull, magnificent, but nowhere near finished. The gears hang loosse nad the light you needed is nowhere in it"
         + "\nthe fog creeps in from every side, soft and patient. The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +
         " The last thing your hear is the clock, ticking more slowly. \n\n Game Over."
-    } else if TimeRanOut then { 
-      "The clocktower strikes, and the sound rolls over the land like a wave. Above the trees the sky is turning pale, and you are still far from the top" 
+    } else if TimeRanOut then {
+      "The clocktower strikes, and the sound rolls over the land like a wave. Above the trees the sky is turning pale, and you are still far from the top"
       + "\nthe fog creeps in from every side, soft and patient. The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +
         " The last thing your hear is the clock, ticking more slowly. \n\n Game Over."
-    } else 
+    } else
       "\"Quitter!\""
 
 
