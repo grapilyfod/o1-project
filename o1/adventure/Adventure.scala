@@ -20,13 +20,22 @@ class Adventure:
     " Stone cottages lean against huge rusted machines, and copper pipe grow out of the ground like tree roots." +
     " Frogs watch you from the lily pads. Little sparks drift through the air like fireflies. You look down at your feet and spot a small tin knight, next to it written in bold: " +
     " MAI".map(Runes.toRunes)))
-  private val crossroads     = Area("Crossroads", "As you walk along a muddy path out of the pond you look in the distance and spot a massive clocktower stretching towards the sky. Next to you, you see a sign. North" + " Crossroads".map(Runes.toRunes) + " East" + " Frog Village".map(Runes.toRunes))
-  private val clocktower     = Area("Clocktower",  "A huge clocktower stands before you, its incessant ticking making your whole soul vibrate.\n" + "Its door is sealed with a strange symbol. A wooden sign is nailed beside it: " + "clock".map(Runes.toRunes))
-  private val village        = Area("Moss Village", "Village of Frog people")
-  private val workshop       = Area("Workshop", "A workshop, seems abandoned.\n" + "It's locked. There is a small keyhole on the door. Perhaps you can find a way to open it?")
-  private val library        = Area("Library",  "Endless shelves of books, all written in strange symbols. A cold fog creeps between the shelves,\n" +
-    "and wherever it touches, the pages go blank. A few books still lie open on the reading tables.")
-  private val clocktowerPeak = Area("Clocktower Peak", "You can see everything from here, you know you have something to say but don't know why")
+  private val crossroads     = Area("Crossroads", "The pond path ends in a clearing in the tall grass beneath a leaning lamppost with no flame in it. A crooked signpost points to the path further with diffrent words carved into it:" + " Moss Village".map(Runes.toRunes)
+    + " to the north-east" + " Clocktower".map(Runes.toRunes)
+    + "to the north. Far above the trees, a clocktower's hands creep forward with a slow, patient tick")
+  private val clocktower     = Area("Clocktower",  "The clocktower rises above everything, it's ticking so loud you can feel it in your heart. "
+    + "The great door at its foot is sealed with a ring of runes : " + "clock".map(Runes.toRunes) + "Behind it, the tick counts down the hours until dawn.")
+  private val village        = Area("Moss Village", "Crooked cottages with roofs of thick green moss huddle around a well that hums quietly to itself. Strings of dim paper lanters hand between the chimneys, and from every window comes the soft croak of frogs telling eachother stories." +
+    "A wooden sign at the village gate reads " + "moss village".map(Runes.toRunes) + "Beneath the tick of the clocktower, nobody seems to be in a hurry.")
+  private val workshop       = Area("Workshop", "Rusted gears the size of carts lean against walls of scrap and copper, and half-finished machines sit under sheets of dusty cloth. Three blueprints are pinned to the far wall, each with a rough drawing and a rune label underneath: "
+  + "dragon".map(Runes.toRunes) + "beside a coiled, winged machine," + "frog choir".map(Runes.toRunes) + "beside a row of tiny singing frogs, and " + "lantern knight ".map(Runes.toRunes) + "beside a small armoured figure holding a light. " +
+    "A fourth, newer sheet shows a crystal music box labelled " + " quartz jukebox".map(Runes.toRunes) + ". Someone spent a lifetime here, and it feels like they only just stepped out.")
+  private val library        = Area("Library",  "Tall shelves curl up into the fog, packed with books whose pages are blank where the mist has eaten the words. A whisper drifts between the shelves, soft and kind, telling you that forgetting doesn't hurt. " +
+    "A few books have survived, their covers still marked with careful rune titles. It is quiet here, and tempting to stay.")
+  private val clocktowerPeak = Area("Clocktower Peak", "At the top, the whole land lies spread beneath you: the pond, the village, the workshop and the library, each with its own glow of sparks. " +
+    "In front of the clock face stands a smooth stone panel with three empty slots in a row, as if waiting for something to be carved into it." +
+    " You feel sure you have something to say, and you almost remember what.")
+
   private val wilderness     = Area("Wilderness", "In front of you lies an empty wilderness with paths twisting away in every direction.\n" +
     "In the middle of the area,you can see an old wooden sign with runic symbols carved on it.\n" +
     " 2" + "south".map(Runes.toRunes) +
