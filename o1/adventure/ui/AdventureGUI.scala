@@ -38,7 +38,7 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
 
     val locationInfo = new TextPane:
       editable = false
-      preferredSize = Dimension(600, 150)
+      preferredSize = Dimension(600, 180)
     val turnOutput = new TextPane:
       editable = false
       preferredSize = Dimension(600,180)
@@ -121,7 +121,7 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
         this.turnOutput.text = info + "\n\n" + this.game.goodbyeMessage
         styleRunes(this.turnOutput)
       }
-      this.locationInfo.text = this.player.location.fullDescription
+      this.locationInfo.text = this.player.location.name + "\n" + this.player.location.fullDescription
       styleRunes(this.locationInfo)
       this.turnCounter.text = "Turns played: " + this.game.turnCount
 
