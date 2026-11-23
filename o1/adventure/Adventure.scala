@@ -57,7 +57,7 @@ class Adventure:
   val diary: Item = Item("diary", "A diary in shaky handwriting. Most pages are blank, eaten by the fog. One survives:\n" + "\"She's scared of the dark.\n" + "Just needs a bit of light.\"")
   val runic_page: Item =Item("torn page", "A page covered entirely in symbols:\n" + "the light remembers what the mind forgets".map(Runes.toRunes))
   val workshop_key: Item = Item("key", "A golden key. Seems dusty.\n" + "Could be useful somewhere in the village.")
-  val drawing: Item = Item("drawing", "A crayon drawn warrior on a paper. Underneath contains written letters:\n" + "grandpa".map(Runes.toRunes) + ". Mai")
+  val drawing: Item = Item("drawing", "A crayon drawn warrior on a paper. Underneath contains written letters:\n" + "grandma".map(Runes.toRunes) + ". Mai")
   //TODO: Change the destintion and Win condition
   /** Area neighbors */
   pond      .setNeighbors(Vector("south" -> crossroads))
