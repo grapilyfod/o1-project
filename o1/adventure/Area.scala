@@ -35,7 +35,6 @@ class Area(var name: String, var description: String):
   def setNeighbors(exits: Vector[(String, Area)]) =
     this.neighbors ++= exits
 
-
   /** Returns a multi-line description of the area as a player sees it. This includes a basic
     * description of the area as well as information about exits and items. If there are no
     * items present, the return value has the form "DESCRIPTION\n\nExits available:

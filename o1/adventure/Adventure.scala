@@ -23,32 +23,61 @@ class Adventure:
   private val crossroads     = Area("Crossroads", "As you walk along a muddy path out of the pond you look in the distance and spot a massive clocktower stretching towards the sky. Next to you, you see a sign. North" + " Crossroads".map(Runes.toRunes) + " East" + " Frog Village".map(Runes.toRunes))
   private val clocktower     = Area("Clocktower",  "A huge clocktower stands before you, its incessant ticking making your whole soul vibrate.\n" + "Its door is sealed with a strange symbol. A wooden sign is nailed beside it: " + "clock".map(Runes.toRunes))
   private val village        = Area("Moss Village", "Village of Frog people")
-  private val workshop       = Area("Workshop", "A workshop, seems abandoned")
+  private val workshop       = Area("Workshop", "A workshop, seems abandoned.\n" + "It's locked. There is a small keyhole on the door. Perhaps you can find a way to open it?")
   private val library        = Area("Library",  "Endless shelves of books, all written in strange symbols. A cold fog creeps between the shelves,\n" +
     "and wherever it touches, the pages go blank. A few books still lie open on the reading tables.")
   private val clocktowerPeak = Area("Clocktower Peak", "You can see everything from here, you know you have something to say but don't know why")
-
+  private val wilderness     = Area("Wilderness", "In front of you lies an empty wilderness with paths twisting away in every direction.\n" +
+    "In the middle of the area,you can see an old wooden sign with runic symbols carved on it.\n" +
+    " 2" + "south".map(Runes.toRunes) +
+    " 1 " + "west".map(Runes.toRunes) +
+    " 1 " + "north".map(Runes.toRunes) +
+    " 1 " + "west".map(Runes.toRunes))
+  private val text = "Only deserted land in the distance. Every path seems to lead the same way with no end in sight."
+  private val maze_1 = Area("Wilderness", this.text)
+  private val maze_2 = Area("Wilderness", this.text)
+  private val maze_3 = Area("Wilderness", this.text)
+  private val maze_4 = Area("Wilderness", this.text)
+  private val hidden_valley = Area("Valley of the damned", "You see light at the end of the tunnel. A flower valley appears before your eyes.\n" +
+    "You get the sense of feeling that nobody has stepped foot onto this area for years.\n" +
+    "There is a wooden chest in the middle of the area, surrounded by flowers of all kind.")
   /** World Items */
   val tinknight: Item = Item("tin knight", "Tin Knight".map(Runes.toRunes) + ". Looks broken like no one has used it for a long long time")
   val ember: Item = Item("ember", "A small, warm ember that never goes out. A tiny tag hangs from it: " + "ember".map(Runes.toRunes))
   val old_book: Item = Item("old book", "The cover reads: " + "stories".map(Runes.toRunes) + "\n" + "Inside, only one tale survives: a little knight who carried a light, so that the dark wasn't scary anymore.")
   val diary: Item = Item("diary", "A diary in shaky handwriting. Most pages are blank, eaten by the fog. One survives:\n" + "\"She's scared of the dark.\n" + "Just needs a bit of light.\"")
   val runic_page: Item =Item("torn page", "A page covered entirely in symbols:\n" + "the light remembers what the mind forgets".map(Runes.toRunes))
+  val workshop_key: Item = Item("key", "A golden key. Seems dusty.\n" + "Could be useful somewhere in the village.")
+  val drawing: Item = Item("drawing", "A cranyon drawn warrior on a paper. Underneath contains written letters:\n" + "grandpa".map(Runes.toRunes) + ". Mai")
   //TODO: Change the destintion and Win condition
   /** Area neighbors */
   pond      .setNeighbors(Vector("south" -> crossroads))
   crossroads.setNeighbors(Vector("south" -> clocktower, "north" -> pond))
   clocktower.setNeighbors(Vector("east" -> village, "inside" -> clocktowerPeak, "north" -> crossroads))
-  village   .setNeighbors(Vector("west" -> clocktower, "north" -> workshop, "south" -> library))
+  village   .setNeighbors(Vector("west" -> clocktower, "north" -> workshop, "south" -> library, "east" -> wilderness))
   workshop  .setNeighbors(Vector("south" -> village))
   library   .setNeighbors(Vector("north" -> village))
   clocktowerPeak.setNeighbors(Vector("down" -> clocktower))
+  wilderness.setNeighbors(Vector("west" -> village, "south" -> maze_1, "east" -> wilderness, "north" -> wilderness))
+  hidden_valley.setNeighbors(Vector("out" -> wilderness))
+  def maze_path(current_area: Area, real_path: String, next: Area) =
+  for path <- Vector("south", "east", "north", "west") do
+    if path == real_path then
+      current_area.setNeighbor(path, next)
+    else
+      current_area.setNeighbor(path, wilderness)
+  maze_path(this.maze_1, "south", this.maze_2)
+  maze_path(this.maze_2, "west", this.maze_3)
+  maze_path(this.maze_3, "north", this.maze_4)
+  maze_path(this.maze_4, "west", this.hidden_valley)
   //TODO
   // HOW TO ADD ITEMS : <area>.addItems(Item("Name", "Description")
   pond.addItem(tinknight)
   library.addItem(old_book)
   library.addItem(diary)
   library.addItem(runic_page)
+  hidden_valley.addItem(workshop_key)
+  hidden_valley.addItem(drawing)
   //TODO
   // HOW TO ADD PROJECTS : <area>.addprojects(WorkshopProject("Name", Turn count to build, "Description", materials)
   pond.addprojects(WorkshopProject("test", 3, "A test project", Vector(tinknight)))
