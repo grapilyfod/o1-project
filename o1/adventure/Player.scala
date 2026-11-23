@@ -13,12 +13,22 @@ class Player(startingArea: Area, game: Adventure):
   private val items = Map[String, Item]()
   private var currentLocation = startingArea        // gatherer: changes in relation to the previous location
   private var quitCommandGiven = false       // one-way flag
+  var hasRemembered = false
+  var usedItem = false
 
   /** Determines if the player has indicated a desire to quit the game. */
   def hasQuit = this.quitCommandGiven
 
   /** Returns the player’s current location. */
   def location = this.currentLocation
+
+  def use(target: String) =
+    if this.location.name == "clocktowerPeak" then { 
+      usedItem = true
+      "This is the right thing to do."
+    } else 
+      "Items are only usable at the break of dawn."
+
 
 
   /** Attempts to move the player in the given direction. This is successful if there
@@ -33,10 +43,12 @@ class Player(startingArea: Area, game: Adventure):
       this.currentLocation = destination.getOrElse(this.currentLocation)
       if destination.isDefined then s"You go $direction." else s"You can't go $direction."
 
-
-  /** Causes the player to rest for a short while (this has no substantial effect in game terms).
-    * Returns a description of what happened. */
-  def rest() = "You rest for a while. Better get a move on, though."
+  def reminisce(spell: String) =
+    if spell == "mai" then
+      hasRemembered = true
+      "Your memory starts to clear up"
+    else
+      "Nothing here stirs a memory"
 
 
   /** Signals that the player wants to quit the game. Returns a description of what happened
@@ -65,7 +77,7 @@ class Player(startingArea: Area, game: Adventure):
 
   def examine(itemName: String): String =
     this.items.get(itemName) match
-      case Some(item) => s"You look closely at the $itemName.\n${item.description}"
+      case Some(item) => s"You look closely at the " + s"$itemName".map(Runes.toRunes) + "\n" + s"${item.description}"
       case None       => "If you want to examine something, you need to pick it up first."
 
   def inventory: String =
@@ -92,7 +104,8 @@ class Player(startingArea: Area, game: Adventure):
           s"you are missing $names"
         } else { 
           for material <- project.materials do
-            this.items.remove(material.name)
+            if material.name != "ember" then
+              this.items.remove(material.name)
           val creation = Item(project.name, project.description)
           items += project.name -> creation
           game.turnCount += project.time -1

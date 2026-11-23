@@ -17,7 +17,6 @@ class Action(input: String):
   def execute(actor: Player): Option[String] =
     this.verb match
       case "go"        => Some(actor.go(this.modifiers))
-      case "rest"      => Some(actor.rest())
       case "quit"      => Some(actor.quit())
       case "get"       => Some(actor.get(this.modifiers))
       case "drop"      => Some(actor.drop(this.modifiers))
@@ -26,6 +25,8 @@ class Action(input: String):
       case "talk"      => Some(actor.talk(this.modifiers))
       case "build"     => Some(actor.build(this.modifiers))
       case "help"      => Some(actor.help)
+      case "reminisce" => Some(actor.reminisce(this.modifiers))
+      case "use"       => Some(actor.use(this.modifiers))
       case other       => None
   /** Returns a textual description of the action object, for debugging purposes. */
   override def toString = s"$verb (modifiers: $modifiers)"
