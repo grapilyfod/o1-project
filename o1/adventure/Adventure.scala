@@ -20,6 +20,7 @@ class Adventure:
     " Stone cottages lean against huge rusted machines, and copper pipe grow out of the ground like tree roots." +
     " Frogs watch you from the lily pads. Little sparks drift through the air like fireflies. You look down at your feet and spot a small tin knight, next to it written in bold: " +
     " MAI".map(Runes.toRunes)))
+  private val crossroads     = Area("Crossroads", "As you walk along a muddy path out of the pond you look in the distance and spot a massive clocktower stretching towards the sky. Next to you, you see a sign. North" + " Crossroads".map(Runes.toRunes) + " East" + " Frog Village".map(Runes.toRunes))
   private val clocktower     = Area("Clocktower",  "A huge clocktower stands before you, its incessant ticking making your whole soul vibrate.\n" + "Its door is sealed with a strange symbol. A wooden sign is nailed beside it: " + "clock".map(Runes.toRunes))
   private val village        = Area("Moss Village", "Village of Frog people")
   private val workshop       = Area("Workshop", "A workshop, seems abandoned")
@@ -35,8 +36,9 @@ class Adventure:
   val runic_page: Item =Item("torn page", "A page covered entirely in symbols:\n" + "the light remembers what the mind forgets".map(Runes.toRunes))
   //TODO: Change the destintion and Win condition
   /** Area neighbors */
-  pond      .setNeighbors(Vector("south" -> clocktower))
-  clocktower.setNeighbors(Vector("east" -> village, "inside" -> clocktowerPeak, "north" -> pond))
+  pond      .setNeighbors(Vector("south" -> crossroads))
+  crossroads.setNeighbors(Vector("south" -> clocktower, "north" -> pond))
+  clocktower.setNeighbors(Vector("east" -> village, "inside" -> clocktowerPeak, "north" -> crossroads))
   village   .setNeighbors(Vector("west" -> clocktower, "north" -> workshop, "south" -> library))
   workshop  .setNeighbors(Vector("south" -> village))
   library   .setNeighbors(Vector("north" -> village))
