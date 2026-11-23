@@ -110,7 +110,7 @@ class Player(startingArea: Area, game: Adventure):
               this.items.remove(material.name)
           val creation = Item(project.name, project.description)
           items += project.name -> creation
-          game.turnCount += project.time -1
+          game.turnCount -= project.time -1
           s"Successfully built ${project.name}"
         }
       case None => "The tools to build anythign should be in the workshop"

@@ -123,7 +123,7 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
       }
       this.locationInfo.text = this.player.location.name + "\n" + this.player.location.fullDescription
       styleRunes(this.locationInfo)
-      this.turnCounter.text = "Turns played: " + this.game.turnCount
+      this.turnCounter.text = "Time until dawn: " + this.game.turnCount + " actions"
 
   end top
 
