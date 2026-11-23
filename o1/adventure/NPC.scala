@@ -13,8 +13,9 @@ class NPC(val name : String, val dialogue_lines: Vector[String], val reward: Opt
         s"\n(${this.line_num + 1}/${this.dialogue_lines.size})"
       else
         ""
-    if this.line_num < this.dialogue_lines.size - 1 then
-      this.line_num += 1
+//    if this.line_num < this.dialogue_lines.size - 1 then
+//      this.line_num += 1
+    this.line_num = (this.line_num + 1) % this.dialogue_lines.size
     line + current_pos
 
   def give_reward(): Option[Item] =

@@ -53,22 +53,30 @@ class Adventure:
   /** Add NPCS */
   //TODO: ADD all Npcs to the game
   village.addNPC(NPC("diane", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
-    "\"...so that the dark wasn't scary anymore.\""), runic = "o"))
+    "\"...so that the dark wasn't scary anymore.\""), runic = "or"))
 
   village.addNPC(NPC("light", Vector(
   "\"You look like you need a light. Here, take my last ember. Make something good with it.\"",
   "\"Go on, the ember won't wait forever. Neither will dawn.\""),
-  reward = Some(ember), runic = "s"))
+  reward = Some(ember), runic = "se"))
 
   village.addNPC(NPC("papyrus", Vector(
     "Papyrus the toad puffs out his chest. \"So you're an inventor huh? You have to build a DRAGON! Everyone loves dragons!\"",
-    "\"The bigger it is, the better! People would talk about it for years!\""), runic = "h"))
+    "\"The bigger it is, the better! People would talk about it for years!\""), runic = "hi"))
+
+  village.addNPC(NPC("vivian", Vector(
+    "A young frog in a bright scarf is humming to herself. \"Oh! Do you like music? Everyone here used to sing.\"",
+    "\"Wouldn't it be wonderful if someone built a choir of little clockwork frogs? They could sing all night long!\"",
+    "\"It might take a few hours to build, but think how happy it would make everyone!\"",
+    "\"Music is the best gift. Much better than some old toy, don't you think?\""), runic = "mn"))
 
   library.addNPC(NPC("archivist", Vector(
     "An ancient frog peers at you over tiny glasses. \"Ah. You can't read any of this, can you?\"",
     "\"These symbols aren't a foreign language. Each one is simply a letter.\"",
+    "\"Each letter you understand is another step towards realising the true meaning of why you are here.\"",
     "\"Look at things whose names you already know. Their symbols will teach you the letters.\"",
     "\"A wise inventor once wrote: a dragon takes a hundred nights, a light takes one evening.\"")))
+  //TODO
   // HOW TO ADD PROJECTS : <area>.addNPC(NPC("Name", "Dialogue")
   /** The character that the player controls in the game. */
   val player = Player(pond, this)
@@ -89,7 +97,7 @@ class Adventure:
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage =
-    "Somewhere, a great clock is ticking.\n\n" +
+    "Somewhere, a clock is ticking.\n\n" +
     "You don't remember your name, or how you got here. You only have the strange feeling\n" +
     "that you promised to finish something before dawn... but not what, or for whom.\n\n" +
     "(Type help to see what you can do.)"
