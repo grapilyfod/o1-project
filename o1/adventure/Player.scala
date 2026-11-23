@@ -23,7 +23,7 @@ class Player(startingArea: Area, game: Adventure):
   def location = this.currentLocation
 
   def use(target: String) =
-    if this.location.name == "clocktowerPeak" then { 
+    if this.location.name == "Clocktower Peak" then {
       usedItem = true
       "This is the right thing to do."
     } else 
@@ -113,9 +113,9 @@ class Player(startingArea: Area, game: Adventure):
           game.turnCount += project.time -1
           s"Successfully built ${project.name}"
         }
-      case None => "Cannot build anything here"
+      case None => "The tools to build anythign should be in the workshop"
 
-  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project>" + "\n reminisce".map(Runes.toRunes)
+  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project> \n use <item>" + "\n reminisce".map(Runes.toRunes)
 
 
 end Player
