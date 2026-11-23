@@ -104,7 +104,7 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
       StyleConstants.setFontSize(NormalTextAttributes, 14)
       //Sets attriutes for Rune text
       val runeAttrbs = new SimpleAttributeSet()
-      StyleConstants.setFontSize(runeAttrbs, 24)
+      StyleConstants.setFontSize(runeAttrbs, 16)
       StyleConstants.setFontFamily(runeAttrbs, RuneFont.familyName)
       doc.setCharacterAttributes(0, text.length, NormalTextAttributes, true)
       

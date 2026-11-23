@@ -43,7 +43,7 @@ class Area(var name: String, var description: String):
     * value has the form "DESCRIPTION\nYou see here: ITEMS SEPARATED BY SPACES\n\nExits available:
     * DIRECTIONS SEPARATED BY SPACES". The items and directions are listed in an arbitrary order. */
   def fullDescription: String =
-    val itemList = if this.items.isEmpty then "" else "\nYou see here: " + this.items.keys.mkString(" ")
+    val itemList = if this.items.isEmpty then "" else "\nYou see here: " + this.items.keys.mkString(", ")
     val NPCList = if this.npcs.isEmpty then "" else "\nCharacters : " + this.npcs.keys.mkString(", ")
     val exitList = "\n\nExits available: " + this.neighbors.keys.mkString(" ")
     this.description + itemList + exitList + NPCList
