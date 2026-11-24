@@ -28,8 +28,8 @@ class Adventure:
   private val village        = Area("Moss Village", "Crooked cottages with roofs of thick green moss huddle around a well that hums quietly to itself. Strings of dim paper lanters hand between the chimneys, and from every window comes the soft croak of frogs telling eachother stories." +
     "A wooden sign at the village gate reads " + "moss village" + "Beneath the tick of the clocktower, nobody seems to be in a hurry.")
   private val workshop       = Area("Workshop", "Rusted gears the size of carts lean against walls of scrap and copper, and half-finished machines sit under sheets of dusty cloth. Three blueprints are pinned to the far wall, each with a rough drawing and a rune label underneath: "
-  + " dragon" + "beside a coiled, winged machine," + " frog choir" + "beside a row of tiny singing frogs, and " + " lantern knight " + "beside a small armoured figure holding a light. " +
-    "A fourth, newer sheet shows a crystal music box labelled " + "quartz jukebox" + ". Someone spent a lifetime here, and it feels like they only just stepped out.")
+  + "d".map(Runes.toRunes)+"ragon " + "beside a coiled, winged machine, " + "f".map(Runes.toRunes)+"rog choir" + " beside a row of tiny singing frogs, and " + "lantern knight " + "beside a small armoured figure holding a light. " +
+    "A fourth, newer sheet shows a crystal music box labelled " + "q".map(Runes.toRunes) +"uart"+"z".map(Runes.toRunes)+ " jukebo"+"x".map(Runes.toRunes)+".\n" + "Someone spent a lifetime here, and it feels like they only just stepped out.")
   private val library        = Area("Library",  "Tall shelves curl up into the fog, packed with books whose pages are blank where the mist has eaten the words. A whisper drifts between the shelves, soft and kind, telling you that forgetting doesn't hurt. " +
     "A few books have survived, their covers still marked with careful rune titles. It is quiet here, and tempting to stay.")
   private val clocktowerPeak = Area("Clocktower Peak", "At the top, the whole land lies spread beneath you: the pond, the village, the workshop and the library, each with its own glow of sparks. The break of dawn is drawing nearer " +
@@ -95,7 +95,7 @@ class Adventure:
   workshop.addprojects(WorkshopProject("quartz jukebox", 10, "a crystal music box", Vector(ember)))
   /** Add NPCS */
   //TODO: ADD all Npcs to the game
-  village.addNPC(NPC("diane", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
+  village.addNPC(NPC("diana", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
     "\"...so that the dark wasn't scary anymore.\""), runic = "or"))
 
   village.addNPC(NPC("light", Vector(
