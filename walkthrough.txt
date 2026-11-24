@@ -16,12 +16,12 @@ Items:
 NPCS:
 -	Diana
 -	Papyrus
--	Light Yagami
+-	Light
 -	Archivist
 -	Vaxei
 -	Link
 -	Miku
--	Mudkip
+-	Mud
 Commands:
 -	go
 -	get

@@ -24,7 +24,7 @@ class Adventure:
     + " to the north-east" + " Clocktower".map(Runes.toRunes)
     + "to the north. Far above the trees, a clocktower's hands creep forward with a slow, patient tick")
   private val clocktower     = Area("Clocktower",  "The clocktower rises above everything, it's ticking so loud you can feel it in your heart. "
-    + "The great door at its foot is sealed with a ring of runes : " + " clock".map(Runes.toRunes) + "Behind it, the tick counts down the hours until dawn.")
+    + "The great door at its foot is sealed with a ring of runes : " + " clock".map(Runes.toRunes) + " Behind it, the tick counts down the hours until dawn.")
   private val village        = Area("Moss Village", "Crooked cottages with roofs of thick green moss huddle around a well that hums quietly to itself. Strings of dim paper lanterns hang between the chimneys, and from every window comes the soft croak of frogs telling eachother stories." +
     "A wooden sign at the village gate reads " + "moss village" + "Beneath the tick of the clocktower, nobody seems to be in a hurry.")
   private val workshop       = Area("Workshop", "Rusted gears the size of carts lean against walls of scrap and copper, and half-finished machines sit under sheets of dusty cloth. Three blueprints are pinned to the far wall, each with a rough drawing and a rune label underneath: "
@@ -98,7 +98,7 @@ class Adventure:
   village.addNPC(NPC("diana", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
     "\"...so that the dark wasn't scary anymore.\""), runic = "or"))
 
-  village.addNPC(NPC("light yagami", Vector(
+  village.addNPC(NPC("light", Vector(
   "\"You look like you need a light. Here, take my last ember. Make something good with it.\"",
   "\"Go on, the ember won't wait forever. Neither will dawn.\""),
   reward = Some(ember), runic = "se"))
@@ -130,7 +130,7 @@ class Adventure:
     "\"Did you see my latest invention? It's the quartz jukebox, a crystal music box that plays songs you love! \"",
     "\"Just imagine it glowing at the bedside, playing a lullaby for children to listen to. Wouldn't you agree that it would make the perfect gift to give to someone? \""), runic = "ywj"))
 
-  clocktower.addNPC(NPC("mudkip", Vector(
+  clocktower.addNPC(NPC("mud", Vector(
     "An old frog with a fish-like fin stands tall, looking above at the clock timer while standing beside the entrance.\n \"This door at the top of the tower has been closed to the village for decades. It's quite magical how the clock is still accurate to the second despite being left untouched.\"",
     "\"The door won't open with raw strength. It's waiting for something made with care. Only with the correct object will the door be unlocked.\"",
     "\"With every turn that passes by, the clock is one tick closer to dawn. Hundreds have fallen on these steps while attempting to return home.\"",
@@ -142,7 +142,7 @@ class Adventure:
   val player = Player(pond, this)
 
   /** The number of turns that have passed since the start of the game. */
-  var turnCount = 60
+  var turnCount = 10
   /** The maximum number of turns that this adventure game allows before time runs out. */
   val timeLimit = 0
 
@@ -172,20 +172,20 @@ class Adventure:
   def goodbyeMessage =
     if this.goodEnding then
       "You press your hand to the stone tablet and carve the spell, slowly as if the shape of the letters were coming back to you." + " MAI".map(Runes.toRunes)  +
-        " \n The runes glow, and the whole land holds its breath. One by one, the strange symbols you could not read all night turn into words. The note in the mud by the pond becomes clear at last." +
-        "[I'm here come back]. \nThe lantern knight lights, the fog pulls back, and the clock stops ticking. You remember a small hand holding a tin knight. You remember inventing an alphabet at a kitchen table, so that two people could write notes nobody else could read. You remember her name." +
-        " \nFar away, a girl looks at the little knight in her room, glowing in the dark, and she is not afraid. 'Grandpa?' Dawn comes, and you re there to see it You win! (TRUE ENDING)"
+        " \n\n The runes glow, and the whole land holds its breath. One by one, the strange symbols you could not read all night turn into words. The note in the mud by the pond becomes clear at last." +
+        "[I'm here come back]. \n\nThe lantern knight lights, the fog pulls back, and the clock stops ticking. You remember a small hand holding a tin knight. You remember inventing an alphabet at a kitchen table, so that two people could write notes nobody else could read. You remember her name." +
+        " \n\nFar away, a girl looks at the little knight in her room, glowing in the dark, and she is not afraid. 'Grandpa?' Dawn comes, and you re there to see it You win! (TRUE ENDING)"
     else if this.normalEnding then {
       "You wind the spring, set the ember and close the little visor. The lantern knight wakes, lifts its light toward the clock face, and a thin golden beam leaves the tower. It crosses the pond, the village, the fog and keeps going, out of the land altogether. "
-      + "\n Far away, a girl wakes in a dim room and sees a small knight holding a light. She smiles, and she reaches for it. You feel it happen, even from here."
-      + "\n But spell on the stone panel stays unanswered. You know there was something you meant to say, and you cannot find it. The sawn comes anyway, gentle and golden, and it carries your light away. It was a good gift. It could have been more. (GOOD ENDING)"
+      + "\n\n Far away, a girl wakes in a dim room and sees a small knight holding a light. She smiles, and she reaches for it. You feel it happen, even from here."
+      + "\n\n But spell on the stone panel stays unanswered. You know there was something you meant to say, and you cannot find it. The sawn comes anyway, gentle and golden, and it carries your light away. It was a good gift. It could have been more. (GOOD ENDING)"
     } else  if this.buildWrong then {
       "You look down at your work. It is beautifull, magnificent, but nowhere near finished. The gears hang loose and the light you needed is nowhere in it"
-        + "\nthe fog creeps in from every side, soft and patient. The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +
+        + "the fog creeps in from every side, soft and patient.\n\n The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +
         " The last thing your hear is the clock, ticking more slowly. \n\n Game Over. (BAD ENDING 1)"
     } else if TimeRanOut then {
       "The clocktower strikes, and the sound rolls over the land like a wave. Above the trees the sky is turning pale, and you are still far from the top"
-      + "\nthe fog creeps in from every side, soft and patient. The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +
+      + "the fog creeps in from every side, soft and patient.\n\n The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +
         " The last thing your hear is the clock, ticking more slowly. \n\n Game Over. (BAD ENDING 2)"
     } else
       "\"Quitter!\""
