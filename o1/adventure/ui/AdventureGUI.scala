@@ -118,7 +118,7 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
         this.turnOutput.text = info
         styleRunes(this.turnOutput)
       } else {
-        this.turnOutput.text = info + "\n\n" + this.game.goodbyeMessage
+        this.turnOutput.text = this.game.goodbyeMessage
         styleRunes(this.turnOutput)
       }
       this.locationInfo.text = this.player.location.name + "\n\n" + this.player.location.fullDescription
