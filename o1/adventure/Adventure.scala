@@ -90,9 +90,9 @@ class Adventure:
   //TODO
   // HOW TO ADD PROJECTS : <area>.addprojects(WorkshopProject("Name", Turn count to build, "Description", materials)
   workshop.addprojects(WorkshopProject("lantern knight", 5, "A small figure of a knight holding a light", Vector(knight_figurine, ember)))
-  workshop.addprojects(WorkshopProject("dragon", 20, "A miniature mechanised dragon", Vector(ember)))
+  workshop.addprojects(WorkshopProject("dragon", 25, "A miniature mechanised dragon", Vector(ember)))
   workshop.addprojects(WorkshopProject("frog choir", 12, "a wooden carving of wooden frogs that makes a pleasant tune", Vector(ember)))
-  workshop.addprojects(WorkshopProject("quartz jukebox", 10, "a crystal music box", Vector(ember)))
+  workshop.addprojects(WorkshopProject("quartz jukebox", 15, "a crystal music box", Vector(ember)))
   /** Add NPCS */
   //TODO: ADD all Npcs to the game
   village.addNPC(NPC("diana", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",

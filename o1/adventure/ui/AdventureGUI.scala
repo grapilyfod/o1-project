@@ -41,7 +41,7 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
       preferredSize = Dimension(600, 200)
     val turnOutput = new TextPane:
       editable = false
-      preferredSize = Dimension(600,200)
+      preferredSize = Dimension(600,220)
     val input = new TextField(40):
       minimumSize = preferredSize
     this.listenTo(input.keys)
