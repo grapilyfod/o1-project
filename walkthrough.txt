@@ -31,6 +31,7 @@ Commands:
 -	talk
 -	build
 -	use
+- quit
 True ending
 1.	get knight figurine
 2.	go south
