@@ -27,7 +27,7 @@ class Player(startingArea: Area, game: Adventure):
       usedItem = true
       "This is the right thing to do."
     } else 
-      "Items are only usable at the break of dawn."
+      "Items are only usable at the top of the clocktower."
 
 
 
@@ -37,8 +37,8 @@ class Player(startingArea: Area, game: Adventure):
   def go(direction: String) =
     val destination = this.location.neighbor(direction)
     val hasBuilt = Vector("dragon", "lantern knight", "frog choir", "quartz jukebox").exists(this.has)
-    if direction == "inside" && this.location.name == "Clocktower" && !hasBuilt then
-      "The clocktower door won't budge. It's waiting for you to bring something."
+    if direction == "inside" && this.location.name == "Clocktower" && !this.has("lantern knight") then
+      "The clocktower door won't budge. It's waiting for you to bring" + "lantern knight".map(Runes.toRunes)
     else if destination.exists(_.name == "Workshop") && !this.has("key") then
       "The workshop is locked. There is a small keyhole on the door.\nPerhaps you can find a way to unlock it?"
     else
@@ -46,7 +46,7 @@ class Player(startingArea: Area, game: Adventure):
       if destination.isDefined then s"You go $direction." else s"You can't go $direction."
 
   def reminisce(spell: String) =
-    if spell == "mai" then
+    if spell.toLowerCase == "mai" then
       hasRemembered = true
       "Your memory starts to clear up"
     else
@@ -110,12 +110,17 @@ class Player(startingArea: Area, game: Adventure):
               this.items.remove(material.name)
           val creation = Item(project.name, project.description)
           items += project.name -> creation
-          game.turnCount -= project.time -1
-          s"Successfully built ${project.name}"
+          if project.name == "lantern knight" then
+            game.turnCount = 10
+            s"Successfully built ${project.name}" + "\n\n You spent a long time in the workshop, the first lights of dawn breaks the sky. You should bring this to the top of the clocktower as soon as possible"
+          else
+            game.turnCount = 5
+            s"Successfully built ${project.name}" + "\n\n You spent a way too long time in the workshop, it's almost dawn. You should bring this to the top of the clocktower as soon as possible but you don't think you'll make it."
+
         }
       case None => "The tools to build anything should be in the workshop"
 
-  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project> \n use <item> \n quit" + "\n reminisce".map(Runes.toRunes)
+  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project> \n use <item> \n quit" + "\n reminisce".map(Runes.toRunes) + "<person>".map(Runes.toRunes)
 
 
 end Player

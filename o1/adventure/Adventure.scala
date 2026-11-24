@@ -28,8 +28,8 @@ class Adventure:
   private val village        = Area("Moss Village", "Crooked cottages with roofs of thick green moss huddle around a well that hums quietly to itself. Strings of dim paper lanterns hang between the chimneys, and from every window comes the soft croak of frogs telling eachother stories." +
     "A wooden sign at the village gate reads " + "moss village" + "Beneath the tick of the clocktower, nobody seems to be in a hurry.")
   private val workshop       = Area("Workshop", "Rusted gears the size of carts lean against walls of scrap and copper, and half-finished machines sit under sheets of dusty cloth. Three blueprints are pinned to the far wall, each with a rough drawing and a rune label underneath: "
-  + "d".map(Runes.toRunes)+"ragon " + "beside a coiled, winged machine, " + "f".map(Runes.toRunes)+"rog choir" + " beside a row of tiny singing frogs, and " + "lantern knight " + "beside a small armoured figure holding a light. " +
-    "A fourth, newer sheet shows a crystal music box labelled " + "q".map(Runes.toRunes) +"uart"+"z".map(Runes.toRunes)+ " jukebo"+"x".map(Runes.toRunes)+".\n" + "Someone spent a lifetime here, and it feels like they only just stepped out.")
+  + "d".map(Runes.toRunes)+"ragon " + "beside a coiled, winged machine, " + "\n" +"f".map(Runes.toRunes)+"rog choir" + " beside a row of tiny singing frogs," + "\n" + "and " + "lantern knight " + "beside a small armoured figure holding a light. \n " +
+    "A fourth, newer sheet shows a crystal music box labelled " + "q".map(Runes.toRunes) +"uart"+"z".map(Runes.toRunes)+ " jukebo"+"x".map(Runes.toRunes)+".\n" + "Someone spent a lifetime here, and it feels like they only just stepped out." + "\n with the tools around the workshop, you might be able to build something. \n You don't have much time thought, you think you only have time for one project.")
   private val library        = Area("Library",  "Tall shelves curl up into the fog, packed with books whose pages are blank where the mist has eaten the words. A whisper drifts between the shelves, soft and kind, telling you that forgetting doesn't hurt. " +
     "A few books have survived, their covers still marked with careful rune titles. It is quiet here, and tempting to stay.")
   private val clocktowerPeak = Area("Clocktower Peak", "At the top, the whole land lies spread beneath you: the pond, the village, the workshop and the library, each with its own glow of sparks. The break of dawn is drawing nearer " +
@@ -142,7 +142,7 @@ class Adventure:
   val player = Player(pond, this)
 
   /** The number of turns that have passed since the start of the game. */
-  var turnCount = 120
+  var turnCount = 100
   /** The maximum number of turns that this adventure game allows before time runs out. */
   val timeLimit = 0
 

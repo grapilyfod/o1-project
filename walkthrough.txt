@@ -34,11 +34,11 @@ Commands:
 - quit
 True ending
 1.	get knight figurine
-2.	go south
-3.	go south
-4.	go east
-5.	talk light yagami
-6.	go east
+2.	go to crossroads
+3.	go to clocktower
+4.	go to Moss Village
+5.	talk light
+6.	go to wilderness
 7.	go south
 8.	go south
 9.	go west
@@ -46,11 +46,11 @@ True ending
 11.	go west
 12.	get key
 13.	go out
-14.	go west
-15.	go north
+14.	go to Moss Village
+15.	go to Workshop
 16.	build lantern knight
-17.	go south
-18.	go west
+17.	go to Moss Village
+18.	go to Clocktower
 19.	go inside
 20.	reminisce mai
 21.	use lantern knight
