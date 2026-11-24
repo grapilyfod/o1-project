@@ -98,7 +98,7 @@ class Adventure:
   village.addNPC(NPC("diana", Vector("As you approach the mysterious individual, she smiles in the distance. \n\"Once there was a little knight...\"\nShe looks at you.",
     "\"...so that the dark wasn't scary anymore.\""), runic = "or"))
 
-  village.addNPC(NPC("light", Vector(
+  village.addNPC(NPC("light yagami", Vector(
   "\"You look like you need a light. Here, take my last ember. Make something good with it.\"",
   "\"Go on, the ember won't wait forever. Neither will dawn.\""),
   reward = Some(ember), runic = "se"))
@@ -107,7 +107,7 @@ class Adventure:
     "Papyrus the toad puffs out his chest. \"So you're an inventor huh? You have to build a DRAGON! Everyone loves dragons!\"",
     "\"The bigger it is, the better! People would talk about it for years!\""), runic = "hi"))
 
-  village.addNPC(NPC("vivian", Vector(
+  village.addNPC(NPC("vaxei", Vector(
     "A young frog in a bright scarf is humming to herself. \"Oh! Do you like music? Everyone here used to sing.\"",
     "\"Wouldn't it be wonderful if someone built a choir of little clockwork frogs? They could sing all night long!\"",
     "\"It might take a few hours to build, but think how happy it would make everyone!\"",
@@ -120,7 +120,7 @@ class Adventure:
     "\"Look at things whose names you already know. Their symbols will teach you the letters.\"",
     "\"A wise inventor once wrote: a dragon takes a endless nights, a light takes one evening.\"")))
 
-  wilderness.addNPC(NPC("mudkip", Vector(
+  wilderness.addNPC(NPC("link", Vector(
     "\"Everyone gets lost here. All the paths may look the same here, but there is a simple route that brings light to this enigmatic land.\"",
     "\"Take one wrong step, and the wilderness bring you back here, with me.\"",
     "\"Sometimes the solution can be right in front of your eyes. You just don't know it yet.\""), runic = "ub"))
@@ -130,6 +130,12 @@ class Adventure:
     "\"Did you see my latest invention? It's the quartz jukebox, a crystal music box that plays songs you love! \"",
     "\"Just imagine it glowing at the bedside, playing a lullaby for children to listen to. Wouldn't you agree that it would make the perfect gift to give to someone? \""), runic = "ywj"))
 
+  clocktower.addNPC(NPC("mudkip", Vector(
+    "An old frog with a fish-like fin stands tall, looking above at the clock timer while standing beside the entrace.\n \"This door at the top of the tower has been closed to the village for decades. It's quite magical how the clock is still accurate to the second despite being left untouched.\"",
+    "\"The door won't open with raw strength. It's waiting for something made with care. Only with the correct object will the door be unlocked.\"",
+    "\"With every turn that passes by, the clock is one tick closer to dawn. Hundreds have fallen on these steps while attempting to return home.\"",
+    "\"Legend has it that at the top of the tower, there's a stone with empty slots. Whoever reaches that far must carve out the reason they were sent here. The one they came for.\"",
+    "\"I've forgotten mine. Don't forget yours too.\""), runic = "pw"))
   //TODO
   // HOW TO ADD PROJECTS : <area>.addNPC(NPC("Name", "Dialogue")
   /** The character that the player controls in the game. */
