@@ -1,0 +1,56 @@
+MAI
+Description: You are an inventor, and the grandfather of Mai, a 7-year-old girl. After a long day of work, you get home, all tired, and go to bed. But when you wake up, you appear in the middle of a small pond, which encrypted text surrounding you. As you wander around the fantasy village with frog people, you have to get to the top of the clocktower before dawn (turns), while carrying an item that you built to unlock the door. As you progress through the game, you will learn more about the backstory of the character through dialogues with the NPCS and the library books. You have to discover the true objective of the game by building the correct item in the workshop to return home.
+Endings:
+-	BAD ENDING 1: build the wrong item (dragon, frog choir, quartz jukebox), and run out of time
+-	BAD ENDING 2: run out of time and fail to build anything
+-	GOOD ENDING: build lantern knight, use lantern knight (without saying reminisce mai)
+-	TRUE ENDING: build lantern knight, reminisce mai, use lantern knight
+Items: 
+-	Ember
+-	Knight figurine
+-	Workshop key
+-	Diary
+-	Old book
+-	Runic page
+-	Drawing
+NPCS:
+-	Diana
+-	Papyrus
+-	Light Yagami
+-	Archivist
+-	Vaxei
+-	Link
+-	Miku
+-	Mudkip
+Commands:
+-	go
+-	get
+-	drop
+-	examine
+-	inventory
+-	talk
+-	build
+-	use
+True ending
+1.	get knight figurine
+2.	go south
+3.	go south
+4.	go east
+5.	talk light yagami
+6.	go east
+7.	go south
+8.	go south
+9.	go west
+10.	go north
+11.	go west
+12.	get key
+13.	go out
+14.	go west
+15.	go north
+16.	build lantern knight
+17.	go south
+18.	go west
+19.	go inside
+20.	reminisce mai
+21.	use lantern knight
+
