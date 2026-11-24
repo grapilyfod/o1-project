@@ -115,7 +115,7 @@ class Player(startingArea: Area, game: Adventure):
         }
       case None => "The tools to build anything should be in the workshop"
 
-  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project> \n use <item>" + "\n reminisce".map(Runes.toRunes)
+  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project> \n use <item> \n quit" + "\n reminisce".map(Runes.toRunes)
 
 
 end Player

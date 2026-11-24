@@ -38,10 +38,10 @@ import scala.language.{adhocExtensions, postfixOps} // enable extension of Swing
 
     val locationInfo = new TextPane:
       editable = false
-      preferredSize = Dimension(600, 180)
+      preferredSize = Dimension(600, 200)
     val turnOutput = new TextPane:
       editable = false
-      preferredSize = Dimension(600,180)
+      preferredSize = Dimension(600,200)
     val input = new TextField(40):
       minimumSize = preferredSize
     this.listenTo(input.keys)
