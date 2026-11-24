@@ -47,11 +47,11 @@ class Adventure:
   private val maze_2 = Area("Wilderness", this.text)
   private val maze_3 = Area("Wilderness", this.text)
   private val maze_4 = Area("Wilderness", this.text)
-  private val hidden_valley = Area("Valley of the damned", "You see light at the end of the tunnel. A flower valley appears before your eyes.\n" +
+  private val hidden_valley = Area("Valley of the Damned", "You see light at the end of the tunnel. A flower valley appears before your eyes.\n" +
     "You get the sense of feeling that nobody has stepped foot onto this area for years.\n" +
     "There is a wooden chest in the middle of the area, surrounded by flowers of all kind.")
   /** World Items */
-  val knight_figurine: Item = Item("knight figurine", "Looks broken like no one has used it for a long long time")
+  val knight_figurine: Item = Item("knight figurine", "Looks broke, like no one has used it for a long long time")
   val ember: Item = Item("ember", "A small, warm ember that never goes out. ")
   val old_book: Item = Item("old book", "The cover reads: " + "stories".map(Runes.toRunes) + "\n" + "Inside, only one tale survives: a little knight who carried a light, so that the dark wasn't scary anymore.")
   val diary: Item = Item("diary", "A diary in shaky handwriting. Most pages are blank, eaten by the fog. One survives:\n" + "\"She's scared of the dark.\n" + "Just needs a bit of light.\"")
@@ -118,7 +118,18 @@ class Adventure:
     "\"These symbols aren't a foreign language. Each one is simply a letter.\"",
     "\"Each letter you understand is another step towards realising the true meaning of why you are here.\"",
     "\"Look at things whose names you already know. Their symbols will teach you the letters.\"",
-    "\"A wise inventor once wrote: a dragon takes a hundred nights, a light takes one evening.\"")))
+    "\"A wise inventor once wrote: a dragon takes a endless nights, a light takes one evening.\"")))
+
+  wilderness.addNPC(NPC("mudkip", Vector(
+    "\"Everyone gets lost here. All the paths may look the same here, but there is a simple route that brings light to this enigmatic land.\"",
+    "\"Take one wrong step, and the wilderness bring you back here, with me.\"",
+    "\"Sometimes the solution can be right in front of your eyes. You just don't know it yet.\""), runic = "ub"))
+
+  crossroads.addNPC(NPC("miku", Vector(
+    "A frog with long blue hair and an 01 tattoo appears in front of you, waving her arm. Seems like an idol.\n \"Oh! You're back! I've been waiting for you.\"",
+    "\"Did you see my latest invention? It's the quartz jukebox, a crystal music box that plays songs you love! \"",
+    "\"Just imagine it glowing at the bedside, playing a lullaby for children to listen to. Wouldn't you agree that it would make the perfect gift to give to someone? \""), runic = "ywj"))
+
   //TODO
   // HOW TO ADD PROJECTS : <area>.addNPC(NPC("Name", "Dialogue")
   /** The character that the player controls in the game. */
