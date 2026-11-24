@@ -142,7 +142,7 @@ class Adventure:
   val player = Player(pond, this)
 
   /** The number of turns that have passed since the start of the game. */
-  var turnCount = 10
+  var turnCount = 120
   /** The maximum number of turns that this adventure game allows before time runs out. */
   val timeLimit = 0
 
