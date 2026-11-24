@@ -57,7 +57,7 @@ class Adventure:
   val diary: Item = Item("diary", "A diary in shaky handwriting. Most pages are blank, eaten by the fog. One survives:\n" + "\"She's scared of the dark.\n" + "Just needs a bit of light.\"")
   val runic_page: Item =Item("torn page", "A page covered entirely in symbols:\n" + "the light remembers what the mind forgets".map(Runes.toRunes))
   val workshop_key: Item = Item("key", "A golden key. Seems dusty.\n" + "Could be useful somewhere in the village.")
-  val drawing: Item = Item("drawing", "A crayon drawn warrior on a paper. Underneath contains written letters:\n" + "grandma".map(Runes.toRunes) + ". Mai")
+  val drawing: Item = Item("drawing", "A crayon drawn warrior on a paper. Underneath contains written letters:\n" + "grandpa".map(Runes.toRunes) + ". Mai")
   //TODO: Change the destintion and Win condition
   /** Area neighbors */
   pond      .setNeighbors(Vector("south" -> crossroads))
@@ -70,15 +70,15 @@ class Adventure:
   wilderness.setNeighbors(Vector("west" -> village, "south" -> maze_1, "east" -> wilderness, "north" -> wilderness))
   hidden_valley.setNeighbors(Vector("out" -> wilderness))
   def maze_path(current_area: Area, real_path: String, next: Area) =
-  for path <- Vector("south", "east", "north", "west") do
-    if path == real_path then
-      current_area.setNeighbor(path, next)
-    else
-      current_area.setNeighbor(path, wilderness)
-  maze_path(this.maze_1, "south", this.maze_2)
-  maze_path(this.maze_2, "west", this.maze_3)
-  maze_path(this.maze_3, "north", this.maze_4)
-  maze_path(this.maze_4, "west", this.hidden_valley)
+    for path <- Vector("south", "east", "north", "west") do
+      if path == real_path then
+        current_area.setNeighbor(path, next)
+      else
+        current_area.setNeighbor(path, wilderness)
+    maze_path(this.maze_1, "south", this.maze_2)
+    maze_path(this.maze_2, "west", this.maze_3)
+    maze_path(this.maze_3, "north", this.maze_4)
+    maze_path(this.maze_4, "west", this.hidden_valley)
   //TODO
   // HOW TO ADD ITEMS : <area>.addItems(Item("Name", "Description")
   pond.addItem(knight_figurine)
