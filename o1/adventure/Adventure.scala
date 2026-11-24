@@ -75,10 +75,10 @@ class Adventure:
         current_area.setNeighbor(path, next)
       else
         current_area.setNeighbor(path, wilderness)
-    maze_path(this.maze_1, "south", this.maze_2)
-    maze_path(this.maze_2, "west", this.maze_3)
-    maze_path(this.maze_3, "north", this.maze_4)
-    maze_path(this.maze_4, "west", this.hidden_valley)
+  maze_path(this.maze_1, "south", this.maze_2)
+  maze_path(this.maze_2, "west", this.maze_3)
+  maze_path(this.maze_3, "north", this.maze_4)
+  maze_path(this.maze_4, "west", this.hidden_valley)
   //TODO
   // HOW TO ADD ITEMS : <area>.addItems(Item("Name", "Description")
   pond.addItem(knight_figurine)
