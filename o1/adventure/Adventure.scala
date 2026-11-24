@@ -18,14 +18,14 @@ class Adventure:
   //TODO : Give better descriptions to the areas.
   private val pond           = Area("Pond", ("Your eyes slowly open after what feels like a long nap. Around you a mossy, overgrown land stretches far and wide." +
     " Stone cottages lean against huge rusted machines, and copper pipes grow out of the ground like tree roots." +
-    " Frogs watch you from the lily pads. Little sparks drift through the air like fireflies. You look down at your feet and spot a small tin knight, next to it written in bold: " +
+    " Frogs watch you from the lily pads. Little sparks drift through the air like fireflies. You look down at your feet and spot a small knight figurine, next to it written in bold: " +
     " MAI".map(Runes.toRunes)))
-  private val crossroads     = Area("Crossroads", "The pond path ends in a clearing in the tall grass beneath a leaning lamppost with no flame in it. A crooked signpost points to the path further with diffrent words carved into it:" + " Moss Village".map(Runes.toRunes)
+  private val crossroads     = Area("Crossroads", "The pond path ends in a clearing in the tall grass beneath a leaning lamppost with no flame in it. A crooked signpost points to the path further with different words carved into it:" + " Moss Village".map(Runes.toRunes)
     + " to the north-east" + " Clocktower".map(Runes.toRunes)
     + "to the north. Far above the trees, a clocktower's hands creep forward with a slow, patient tick")
   private val clocktower     = Area("Clocktower",  "The clocktower rises above everything, it's ticking so loud you can feel it in your heart. "
     + "The great door at its foot is sealed with a ring of runes : " + " clock".map(Runes.toRunes) + "Behind it, the tick counts down the hours until dawn.")
-  private val village        = Area("Moss Village", "Crooked cottages with roofs of thick green moss huddle around a well that hums quietly to itself. Strings of dim paper lanters hand between the chimneys, and from every window comes the soft croak of frogs telling eachother stories." +
+  private val village        = Area("Moss Village", "Crooked cottages with roofs of thick green moss huddle around a well that hums quietly to itself. Strings of dim paper lanterns hang between the chimneys, and from every window comes the soft croak of frogs telling eachother stories." +
     "A wooden sign at the village gate reads " + "moss village" + "Beneath the tick of the clocktower, nobody seems to be in a hurry.")
   private val workshop       = Area("Workshop", "Rusted gears the size of carts lean against walls of scrap and copper, and half-finished machines sit under sheets of dusty cloth. Three blueprints are pinned to the far wall, each with a rough drawing and a rune label underneath: "
   + "d".map(Runes.toRunes)+"ragon " + "beside a coiled, winged machine, " + "f".map(Runes.toRunes)+"rog choir" + " beside a row of tiny singing frogs, and " + "lantern knight " + "beside a small armoured figure holding a light. " +
@@ -49,9 +49,9 @@ class Adventure:
   private val maze_4 = Area("Wilderness", this.text)
   private val hidden_valley = Area("Valley of the Damned", "You see light at the end of the tunnel. A flower valley appears before your eyes.\n" +
     "You get the sense of feeling that nobody has stepped foot onto this area for years.\n" +
-    "There is a wooden chest in the middle of the area, surrounded by flowers of all kind.")
+    "There is a wooden chest in the middle of the area, surrounded by flowers of all kinds.")
   /** World Items */
-  val knight_figurine: Item = Item("knight figurine", "Looks broke, like no one has used it for a long long time")
+  val knight_figurine: Item = Item("knight figurine", "Looks broken, like no one has used it for a long long time")
   val ember: Item = Item("ember", "A small, warm ember that never goes out. ")
   val old_book: Item = Item("old book", "The cover reads: " + "stories".map(Runes.toRunes) + "\n" + "Inside, only one tale survives: a little knight who carried a light, so that the dark wasn't scary anymore.")
   val diary: Item = Item("diary", "A diary in shaky handwriting. Most pages are blank, eaten by the fog. One survives:\n" + "\"She's scared of the dark.\n" + "Just needs a bit of light.\"")
@@ -131,7 +131,7 @@ class Adventure:
     "\"Just imagine it glowing at the bedside, playing a lullaby for children to listen to. Wouldn't you agree that it would make the perfect gift to give to someone? \""), runic = "ywj"))
 
   clocktower.addNPC(NPC("mudkip", Vector(
-    "An old frog with a fish-like fin stands tall, looking above at the clock timer while standing beside the entrace.\n \"This door at the top of the tower has been closed to the village for decades. It's quite magical how the clock is still accurate to the second despite being left untouched.\"",
+    "An old frog with a fish-like fin stands tall, looking above at the clock timer while standing beside the entrance.\n \"This door at the top of the tower has been closed to the village for decades. It's quite magical how the clock is still accurate to the second despite being left untouched.\"",
     "\"The door won't open with raw strength. It's waiting for something made with care. Only with the correct object will the door be unlocked.\"",
     "\"With every turn that passes by, the clock is one tick closer to dawn. Hundreds have fallen on these steps while attempting to return home.\"",
     "\"Legend has it that at the top of the tower, there's a stone with empty slots. Whoever reaches that far must carve out the reason they were sent here. The one they came for.\"",
@@ -173,12 +173,12 @@ class Adventure:
     if this.goodEnding then
       "You press your hand to the stone tablet and carve the spell, slowly as if the shape of the letters were coming back to you." + " MAI".map(Runes.toRunes)  +
         " \n The runes glow, and the whole land holds its breath. One by one, the strange symbols you could not read all night turn into words. The note in the mud by the pond becomes clear at last." +
-        "[I'm here come back]. \nThe lantern knight lights, the fog pulls back, and the clock stops ticking. You rememner a small hand holding a tin knight. You remember inventing an alphabet at a kitchen table, so that two people could write notes nobody else could read. You remember her name." +
+        "[I'm here come back]. \nThe lantern knight lights, the fog pulls back, and the clock stops ticking. You remember a small hand holding a tin knight. You remember inventing an alphabet at a kitchen table, so that two people could write notes nobody else could read. You remember her name." +
         " \nFar away, a girl looks at the little knight in her room, glowing in the dark, and she is not afraid. 'Grandpa?' Dawn comes, and you re there to see it You win! (TRUE ENDING)"
     else if this.normalEnding then {
       "You wind the spring, set the ember and close the little visor. The lantern knight wakes, lifts its light toward the clock face, and a thin golden beam leaves the tower. It crosses the pond, the village, the fog and keeps going, out of the land altogether. "
       + "\n Far away, a girl wakes in a dim room and sees a small knight holding a light. She smiles, and she reaches for it. You feel it happen, even from here."
-      + "\n But spell on the stone panel stays unanswered. You know there was something you meant to say, and you cannot find it. The sawn comes anyway, genle and golden, and it carries your light away. It was a good gift. It could have been more. (GOOD ENDING)"
+      + "\n But spell on the stone panel stays unanswered. You know there was something you meant to say, and you cannot find it. The sawn comes anyway, gentle and golden, and it carries your light away. It was a good gift. It could have been more. (GOOD ENDING)"
     } else  if this.buildWrong then {
       "You look down at your work. It is beautifull, magnificent, but nowhere near finished. The gears hang loose and the light you needed is nowhere in it"
         + "\nthe fog creeps in from every side, soft and patient. The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +

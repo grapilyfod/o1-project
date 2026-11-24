@@ -36,7 +36,7 @@ class Player(startingArea: Area, game: Adventure):
     * a description of the result: "You go DIRECTION." or "You can't go DIRECTION." */
   def go(direction: String) =
     val destination = this.location.neighbor(direction)
-    val hasBuilt = Vector("clockwork dragon", "lantern knight", "frog choir").exists(this.has)
+    val hasBuilt = Vector("dragon", "lantern knight", "frog choir", "quartz jukebox").exists(this.has)
     if direction == "inside" && this.location.name == "Clocktower" && !hasBuilt then
       "The clocktower door won't budge. It's waiting for you to bring something."
     else if destination.exists(_.name == "Workshop") && !this.has("key") then
@@ -113,7 +113,7 @@ class Player(startingArea: Area, game: Adventure):
           game.turnCount -= project.time -1
           s"Successfully built ${project.name}"
         }
-      case None => "The tools to build anythign should be in the workshop"
+      case None => "The tools to build anything should be in the workshop"
 
   def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project> \n use <item>" + "\n reminisce".map(Runes.toRunes)
 
