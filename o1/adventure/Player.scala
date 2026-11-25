@@ -48,7 +48,7 @@ class Player(startingArea: Area, game: Adventure):
   def reminisce(spell: String) =
     if spell.toLowerCase == "mai" then
       hasRemembered = true
-      "Your memory starts to clear up"
+      "Your memory starts to clear up, you have done the right thing."
     else
       "Nothing here stirs a memory"
 
