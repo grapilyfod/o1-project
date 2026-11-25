@@ -39,9 +39,9 @@ class Adventure:
   private val wilderness     = Area("Wilderness", "In front of you lies an empty wilderness with paths twisting away in every direction.\n" +
     "In the middle of the area,you can see an old wooden sign with runic symbols carved on it.\n" +
     " 2" + "south".map(Runes.toRunes) +
-    " 1 " + "west".map(Runes.toRunes) +
-    " 1 " + "north".map(Runes.toRunes) +
-    " 1 " + "west".map(Runes.toRunes))
+    "  1  " + "west".map(Runes.toRunes) +
+    "  1  " + "north".map(Runes.toRunes) +
+    "  1  " + "west".map(Runes.toRunes))
   private val text = "Only deserted land in the distance. Every path seems to lead the same way with no end in sight."
   private val maze_1 = Area("Wilderness", this.text)
   private val maze_2 = Area("Wilderness", this.text)
@@ -152,7 +152,7 @@ class Adventure:
 
   def TimeRanOut = this.turnCount <= this.timeLimit
 
-  def buildWrong = TimeRanOut && !this.player.has("lantern knight") && Vector("frog choir", "dragon", "quartz jukebox").exists(this.player.has)
+  def buildWrong = TimeRanOut && (this.player.has("lantern knight") || this.player.has("frog choir") ||this.player.has("dragon") ||this.player.has("quartz jukebox"))
 
   def normalEnding = this.player.usedItem && this.player.has("lantern knight")
 
@@ -184,7 +184,7 @@ class Adventure:
         + "the fog creeps in from every side, soft and patient.\n\n The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +
         " The last thing your hear is the clock, ticking more slowly. \n\n Game Over. (BAD ENDING 1)"
     } else if TimeRanOut then {
-      "The clocktower strikes, and the sound rolls over the land like a wave. Above the trees the sky is turning pale, and you are still far from the top"
+      "The clocktower strikes, and the sound rolls over the land like a wave. Above the trees the sky is turning pale, and you are still far from the top "
       + "the fog creeps in from every side, soft and patient.\n\n The voices that were whispering all night are quiet now, and somehow that is worse. The sparks above you dim one by one. Somewhere very far away, someone is waiting for a gift that will not arrive." +
         " The last thing your hear is the clock, ticking more slowly. \n\n Game Over. (BAD ENDING 2)"
     } else

@@ -3,7 +3,7 @@ by The Hai Long Nguyen and Andreas Gunnar (2026)
 
 This game was created in the context of the CS-A1110 O1 course. 
 
-A simple text based adventure game that made us usse everything we have learned thus far to make our own project. The game has many secrets, different endings and details to catch while playing the game, however a walkthrough is provided later in this document to help with detailing the world and the steps to get to the secret ending. The game is best played blind and with a curious mind :)
+A simple text based adventure game inspired by games such as Tunic and Outer Wilds that made us use everything we have learned thus far to make our own project. The game has many secrets, different endings and details to catch while playing the game, however a walkthrough is provided later in this document to help with detailing the world and the steps to get to the secret ending. The game is best played blind and with a curious mind :)
 
 File available publicly online :https://github.com/grapilyfod/o1-project.git
 
@@ -75,11 +75,11 @@ True ending
 18.	go to Clocktower (go west)
 19.	go inside 
 20.	reminisce mai
-21.	use lantern knight
+21.	use an item 
 
 --- 
 ### Use of AI 
 
-Generative AI was used during this project to help out with brainstorming and connecting our original ideas, to provide more detailed descriptions to areas, and to generate the custom font used for the game as well as giving guidance on how to implement it (e.g. which libraries should be used for it's implementation and a quick tutorial on how to work with the libraries.(teaching assistants where also contacted through Piazza for this same question))
+Generative AI was used during this project to help out with brainstorming and connecting our original ideas, to provide more detailed descriptions to areas, and to generate the custom font used for the game as well as giving guidance on how to implement it without giving any code (e.g. which libraries should be used for it's implementation and a quick tutorial on how to work with the libraries.(teaching assistants where also contacted through Piazza for this same question))
 
 ## Nonethless, all of the code was written by us 

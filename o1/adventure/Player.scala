@@ -50,7 +50,7 @@ class Player(startingArea: Area, game: Adventure):
       hasRemembered = true
       "Your memory starts to clear up, you have done the right thing."
     else
-      "Nothing here stirs a memory"
+      "Nothing here stirs a memory, a spell stone is required to cast a spell."
 
 
   /** Signals that the player wants to quit the game. Returns a description of what happened
@@ -112,15 +112,15 @@ class Player(startingArea: Area, game: Adventure):
           items += project.name -> creation
           if project.name == "lantern knight" then
             game.turnCount = 10
-            s"Successfully built ${project.name}" + "\n\n You spent a long time in the workshop, the first lights of dawn breaks the sky. You should bring this to the top of the clocktower as soon as possible"
+            s"Successfully built ${project.name}" + "\n\n You spent a long time in the workshop, the first lights of dawn breaks the sky. You should bring this to the top of the clocktower as soon as possible (you do not have many turns until dawn)"
           else
-            game.turnCount = 5
+            game.turnCount = 4
             s"Successfully built ${project.name}" + "\n\n You spent a way too long time in the workshop, it's almost dawn. You should bring this to the top of the clocktower as soon as possible but you don't think you'll make it."
 
         }
       case None => "The tools to build anything should be in the workshop"
 
-  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project> \n use <item> \n quit" + "\n reminisce".map(Runes.toRunes) + "<person>".map(Runes.toRunes)
+  def help: String = "Commands : \n go <direction> \n get <item> \n drop <item> \n examine <item> \n inventory \n talk <target> (continue using talk for more dialogue with the NPC) \n build <project> \n use <item> \n quit" + "\n reminisce".map(Runes.toRunes) + " " + "<person>".map(Runes.toRunes)
 
 
 end Player
